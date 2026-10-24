@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><title>Uni Connect</title><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "secondary-fixed-dim": "#c3c0ff", "primary-fixed": "#dae2fd", "on-surface": "#0b1c30", "on-tertiary-container": "#0090a9", "on-secondary-fixed-variant": "#3323cc", "surface-container-lowest": "#ffffff", "inverse-surface": "#213145", "surface": "#f8f9ff", "on-tertiary": "#ffffff", "on-secondary-fixed": "#0f0069", "primary-fixed-dim": "#bec6e0", "tertiary-fixed-dim": "#4cd7f6", "on-error-container": "#93000a", "surface-container-highest": "#d3e4fe", "surface-container": "#e5eeff", "on-tertiary-fixed-variant": "#004e5c", "surface-tint": "#565e74", "surface-dim": "#cbdbf5", "surface-container-low": "#eff4ff", "secondary-fixed": "#e2dfff", "on-primary-container": "#7c839b", "on-error": "#ffffff", "tertiary-fixed": "#acedff", "background": "#f8f9ff", "surface-container-high": "#dce9ff", "error": "#ba1a1a", "primary-container": "#131b2e", "on-surface-variant": "#45464d", "inverse-on-surface": "#eaf1ff", "tertiary": "#000000", "secondary": "#4b41e1", "on-primary-fixed": "#131b2e", "tertiary-container": "#001f26", "on-secondary-container": "#fffbff", "outline-variant": "#c6c6cd", "on-primary": "#ffffff", "outline": "#76777d", "inverse-primary": "#bec6e0", "surface-bright": "#f8f9ff", "on-secondary": "#ffffff", "secondary-container": "#645efb", "on-primary-fixed-variant": "#3f465c", "on-background": "#0b1c30", "primary": "#000000", "error-container": "#ffdad6", "on-tertiary-fixed": "#001f26", "surface-variant": "#d3e4fe" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-xl": "1.5rem", "gutter-tablet": "1.25rem", "margin-desktop": "2rem", "space-md": "0.75rem", "margin-tablet": "1.5rem", "margin": "1rem", "gutter": "1rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "space-lg": "1rem", "gutter-desktop": "1.5rem" }, fontFamily: { "label-md": ["JetBrains Mono"], "label-sm": ["JetBrains Mono"], "headline-lg": ["Inter"], "body-sm": ["Inter"], "headline-md": ["Inter"], "body-md": ["Inter"], "headline-xl": ["Inter"], "headline-sm": ["Inter"], "body-lg": ["Inter"], "headline-xl-mobile": ["Inter"] }, fontSize: { "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.02em", fontWeight: "500" }], "label-sm": ["10px", { lineHeight: "14px", letterSpacing: "0.04em", fontWeight: "500" }], "headline-lg": ["24px", { lineHeight: "32px", letterSpacing: "-0.015em", fontWeight: "600" }], "body-sm": ["12px", { lineHeight: "16px", fontWeight: "400" }], "headline-md": ["20px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "600" }], "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }], "headline-xl": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700" }], "headline-sm": ["16px", { lineHeight: "24px", letterSpacing: "-0.005em", fontWeight: "600" }], "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }], "headline-xl-mobile": ["26px", { lineHeight: "32px", letterSpacing: "-0.015em", fontWeight: "700" }] } } } };</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#f8f9ff;color:#0b1c30;}body{overscroll-behavior:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface min-h-screen flex flex-col antialiased selection:bg-secondary-fixed selection:text-on-secondary-fixed"><header class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)] pt-safe"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><img alt="Uni Connect Logo" class="h-8 w-auto object-contain shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLGp5arT1RL522iyZ3EpwemWjDRI1_UM8t9tAIvywgygpl_mbjGNVtQKiU9qZ6BRd5wfbiwF85qvXQYRBG13hkzQGJ-OSFhhXR5nHgGdcUYqtRec976WyX3LfMTIWqQimWcki91SZ-33fzoA8hR7VnESM518dq7JuP2V9ZhczmdoQCt_4aDkA6uLSMyho4oC9u7_LtPxd4SyOmq__EkMgj_ffH5CljmtNZ2xhGBH-pFepI3erepqyy"/><div class="flex flex-col min-w-0"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight truncate">Uni Connect</span></div><div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface-container-high/60 max-w-fit"><span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse shrink-0"></span><span class="font-label-sm text-label-sm text-secondary truncate">Wi-Fi Connected • Strong</span></div></div></div><div class="flex items-center gap-space-xs shrink-0"><button aria-label="Notifications" class="w-11 h-11 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors relative"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface"></span></button><div class="p-0.5 rounded-full ring-1 ring-outline-variant/30"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDt-pNI22gUvuKJ2GDkQFkabxL1UIJeiEghHlKXYOe7QO7ImmZfzrKshHP-a-wMn1S5hpyJKepdTuahSl06eXUaEFqGirG7vC4GCDfKAB7vA0dHzUYHUuqF8SRgV4CM7kr1AiTz1P8srPSkd8uPScBW1y0I7AZVhJklAWLW1LDrg3JaejHkeeLC00XgEPWt26l5Twhh58C7eAImYpgCLgEPvA0_3OEvj0nzYFxSshFOeKmD__GcQhtE"/></div></div></div></header><main class="flex flex-col relative w-full px-margin pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full pb-6 space-y-4">
+<!-- Campus Official System Broadcast Banner -->
+<div class="relative overflow-hidden rounded-xl bg-primary-container text-on-primary p-4 shadow-md">
+<div class="absolute -right-6 -bottom-6 w-28 h-28 rounded-full bg-secondary/20 blur-xl pointer-events-none"></div>
+<div class="flex items-start gap-3">
+<div class="p-2 rounded-lg bg-surface-container-highest/20 text-tertiary-fixed-dim shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">wifi_tethering</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 rounded-full bg-tertiary-fixed-dim/20 text-tertiary-fixed-dim font-label-sm text-label-sm uppercase tracking-wider">
+            Infrastructure Notice
+          </span>
+<span class="font-label-sm text-label-sm text-on-primary-container">02:00 AM - 04:00 AM</span>
+</div>
+<p class="font-headline-sm text-headline-sm text-on-primary leading-tight">Campus Wi-Fi 6 Upgrade Tonight</p>
+<p class="font-body-sm text-body-sm text-inverse-primary/90 mt-1">
+          Offline Bluetooth mesh door access remains 100% functional. Academic keycards and badges will authenticate seamlessly without latency.
+        </p>
+</div>
+</div>
+</div>
+<!-- Interactive Category Horizontal Scroll -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1 -mx-margin px-margin no-scrollbar">
+<button class="filter-chip active-chip px-3.5 py-1.5 rounded-full bg-secondary text-on-secondary font-body-sm text-body-sm font-medium whitespace-nowrap shadow-sm transition-all flex items-center gap-1.5" onclick="selectFilter(this)">
+<span class="material-symbols-outlined text-[16px]">stream</span>
+      All Events
+    </button>
+<button class="filter-chip px-3.5 py-1.5 rounded-full bg-surface-container-high text-on-surface font-body-sm text-body-sm whitespace-nowrap hover:bg-surface-container-highest transition-all flex items-center gap-1.5" onclick="selectFilter(this)">
+<span class="material-symbols-outlined text-[16px]">school</span>
+      Academic
+    </button>
+<button class="filter-chip px-3.5 py-1.5 rounded-full bg-surface-container-high text-on-surface font-body-sm text-body-sm whitespace-nowrap hover:bg-surface-container-highest transition-all flex items-center gap-1.5" onclick="selectFilter(this)">
+<span class="material-symbols-outlined text-[16px]">terminal</span>
+      Career &amp; Tech
+    </button>
+<button class="filter-chip px-3.5 py-1.5 rounded-full bg-surface-container-high text-on-surface font-body-sm text-body-sm whitespace-nowrap hover:bg-surface-container-highest transition-all flex items-center gap-1.5" onclick="selectFilter(this)">
+<span class="material-symbols-outlined text-[16px]">celebration</span>
+      Student Life
+    </button>
+<button class="filter-chip px-3.5 py-1.5 rounded-full bg-surface-container-high text-on-surface font-body-sm text-body-sm whitespace-nowrap hover:bg-surface-container-highest transition-all flex items-center gap-1.5" onclick="selectFilter(this)">
+<span class="material-symbols-outlined text-[16px]">health_and_safety</span>
+      Safety Workshops
+    </button>
+</div>
+<!-- Featured Event Card (Hero Component) -->
+<div class="rounded-xl bg-surface-container-lowest shadow-md overflow-hidden flex flex-col">
+<!-- Image Header with Telemetry Badges -->
+<div class="relative w-full h-44">
+<img class="w-full h-full object-cover" data-alt="A modern glass university innovation lab filled with student developers collaborating during an artificial intelligence hackathon, soft violet and cyan technical lighting, dual monitors, laptops, architectural college atrium background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBdQr7j3XG0HCNhqhHnyBM_mABQ4R5Bn9sTbU1_dOTek6jzEpPU71P1XyMFgB8Sjuhvy4y_D8ASLBARc3EfnwEyvRIeCnZ0LBJWqBg8Aw58nFfSHC09CF6JcukQMBiXzY2kQaVhIfhQR_aSZgfDF1w973tWZT8D_vZ7cVDu_nMbQndaCWPJFxUh3O76qCsGOXKlYRS5UAY78B9z8D9oLX_E6jjZx-HCTQX10yLTgtbr2L-0XcZZC3F"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary-container/90 via-primary-container/30 to-transparent"></div>
+<!-- Top Live Badges -->
+<div class="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md shadow-sm">
+<span class="w-2 h-2 rounded-full bg-secondary-container animate-ping"></span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold tracking-wide uppercase">Featured Pulse</span>
+</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-tertiary-container/80 backdrop-blur-md text-tertiary-fixed-dim font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">cell_tower</span>
+          Ultra-Wideband Node A4
+        </span>
+</div>
+<!-- Time Overlay in Image Base -->
+<div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-on-primary">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-tertiary-fixed-dim">calendar_today</span>
+<span class="font-headline-sm text-headline-sm text-surface-container-lowest font-medium">Tomorrow, 10:00 AM</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-highest/30 backdrop-blur-sm text-surface-container-lowest">
+          All Day Event
+        </span>
+</div>
+</div>
+<!-- Body Information -->
+<div class="p-4 flex flex-col gap-3">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface leading-tight">
+          Annual Campus Hackathon &amp; AI Showcase
+        </h2>
+<div class="flex items-center gap-1.5 text-on-surface-variant mt-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">near_me</span>
+<span class="font-body-sm text-body-sm">Innovation Center • Grand Atrium Hall</span>
+</div>
+</div>
+<!-- Occupancy & Telemetry Gauge -->
+<div class="p-3 rounded-lg bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">group</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Capacity Telemetry</span>
+</div>
+<span class="font-label-md text-label-md text-secondary font-semibold">142 / 200 RSVPs</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-secondary rounded-full transition-all duration-500" style="width: 71%"></div>
+</div>
+<div class="flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>71% Booked</span>
+<span class="text-on-tertiary-container">58 seats remaining</span>
+</div>
+</div>
+<!-- RSVP Action Bar -->
+<div class="pt-1 flex items-center gap-2">
+<button class="flex-1 py-2.5 px-4 rounded-lg bg-primary hover:bg-inverse-surface text-on-primary font-body-md text-body-md font-medium transition-all shadow-sm flex items-center justify-center gap-2" id="hero-rsvp-btn" onclick="toggleHeroRSVP(this)">
+<span class="material-symbols-outlined text-[18px]">event_available</span>
+<span id="hero-rsvp-text">RSVP &amp; Add to Smart Schedule</span>
+</button>
+<button class="w-11 h-11 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface flex items-center justify-center shrink-0 transition-colors" title="Locate Room Beacon">
+<span class="material-symbols-outlined text-[20px] text-secondary">explore</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Real-Time Campus Feed Header -->
+<div class="flex items-center justify-between pt-2">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface">Upcoming Syncs</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm">3 Live</span>
+</div>
+<button class="flex items-center gap-1 text-secondary font-label-md text-label-md hover:underline">
+<span>Auto-Sync</span>
+<span class="material-symbols-outlined text-[16px]">sync</span>
+</button>
+</div>
+<!-- Event Feed Items -->
+<div class="flex flex-col space-y-3">
+<!-- Card 1: Resume & Tech Networking Night -->
+<div class="p-4 rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-3 transition-transform active:scale-[0.99]">
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-start gap-3 min-w-0">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex flex-col items-center justify-center shrink-0 text-on-surface">
+<span class="font-label-sm text-label-sm text-secondary font-bold uppercase">Today</span>
+<span class="font-headline-sm text-headline-sm font-bold leading-none">17</span>
+</div>
+<div class="min-w-0">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-tertiary-fixed/60 text-on-tertiary-fixed font-label-sm text-label-sm mb-1">
+<span class="material-symbols-outlined text-[12px] text-on-tertiary-container">verified</span>
+<span>RSVP Confirmed</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">
+              Resume &amp; Tech Industry Networking Night
+            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+              5:30 PM – 8:00 PM • Student Union Main Hall
+            </p>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-2 border-none bg-surface-container-low/60 p-2.5 rounded-lg">
+<div class="flex items-center gap-2">
+<span class="flex h-2 w-2 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary-container opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Badge Tap Reader Ready • Beacon B12</span>
+</div>
+<button class="px-3 py-1 rounded bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">qr_code_scanner</span>
+          Pass
+        </button>
+</div>
+</div>
+<!-- Card 2: Campus Night Safety & Self Defense -->
+<div class="p-4 rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-3 transition-transform active:scale-[0.99]">
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-start gap-3 min-w-0">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex flex-col items-center justify-center shrink-0 text-on-surface">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-bold uppercase">Thu</span>
+<span class="font-headline-sm text-headline-sm font-bold leading-none">19</span>
+</div>
+<div class="min-w-0">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm mb-1">
+<span class="material-symbols-outlined text-[12px] text-error">security</span>
+<span>Campus Security Initiative</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">
+              Campus Night Safety &amp; Self Defense
+            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+              6:00 PM – 7:30 PM • Recreation Center Studio 2
+            </p>
+</div>
+</div>
+</div>
+<!-- Capacity & Instant RSVP button -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed-dim">sensors</span>
+<span class="font-label-sm text-label-sm">Capacity: 34 / 45 Spots Reserved</span>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-body-sm text-body-sm font-medium transition-all flex items-center gap-1" onclick="toggleCardRSVP(this)">
+<span class="material-symbols-outlined text-[16px]">add_circle</span>
+<span>Reserve</span>
+</button>
+</div>
+</div>
+<!-- Card 3: Cybersecurity & IoT Privacy Roundtable -->
+<div class="p-4 rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-3 transition-transform active:scale-[0.99]">
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-start gap-3 min-w-0">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex flex-col items-center justify-center shrink-0 text-on-surface">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-bold uppercase">Fri</span>
+<span class="font-headline-sm text-headline-sm font-bold leading-none">20</span>
+</div>
+<div class="min-w-0">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-fixed/50 text-on-secondary-fixed-variant font-label-sm text-label-sm mb-1">
+<span class="material-symbols-outlined text-[12px]">code</span>
+<span>Engineering Credit Eligible</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">
+              Cybersecurity &amp; IoT Privacy Roundtable
+            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+              3:00 PM – 4:30 PM • Science Block B, Room 302
+            </p>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-secondary">wifi_protected_setup</span>
+<span class="font-label-sm text-label-sm">Hybrid Stream Available</span>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-body-sm text-body-sm font-medium transition-all flex items-center gap-1" onclick="toggleCardRSVP(this)">
+<span class="material-symbols-outlined text-[16px]">add_circle</span>
+<span>Reserve</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Campus Community Map Quick-Beacon Snapshot -->
+<div class="rounded-xl bg-surface-container-lowest shadow-sm p-4 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-secondary">map</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Live Campus Activity Hotspots</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-tertiary-container font-medium">35 Beacons Active</span>
+</div>
+<div class="w-full h-36 bg-cover bg-center rounded-lg relative overflow-hidden shadow-inner flex items-end p-3" data-location="University Quadrangle and Innovation Hub" style="background-image: url('https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg')">
+<div class="absolute inset-0 bg-gradient-to-t from-primary-container/80 via-transparent to-transparent pointer-events-none"></div>
+<div class="relative z-10 flex items-center justify-between w-full text-on-primary">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-fixed-dim animate-pulse"></span>
+<span class="font-body-sm text-body-sm text-surface-container-lowest font-medium">High Student Footfall at Innovation Quad</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container-highest/20 backdrop-blur-md font-label-sm text-label-sm text-surface-container-lowest">
+          Open Map
+        </span>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function selectFilter(btn) {
+    const allButtons = document.querySelectorAll('.filter-chip');
+    allButtons.forEach(b => {
+      b.classList.remove('bg-secondary', 'text-on-secondary');
+      b.classList.add('bg-surface-container-high', 'text-on-surface');
+    });
+    btn.classList.remove('bg-surface-container-high', 'text-on-surface');
+    btn.classList.add('bg-secondary', 'text-on-secondary');
+  }
+
+  function toggleHeroRSVP(btn) {
+    const textSpan = document.getElementById('hero-rsvp-text');
+    const isBooked = btn.getAttribute('data-rsvp') === 'true';
+
+    if (!isBooked) {
+      btn.setAttribute('data-rsvp', 'true');
+      btn.classList.remove('bg-primary', 'hover:bg-inverse-surface');
+      btn.classList.add('bg-secondary', 'text-on-secondary');
+      textSpan.textContent = 'RSVP Confirmed • Badge Linked';
+    } else {
+      btn.setAttribute('data-rsvp', 'false');
+      btn.classList.remove('bg-secondary', 'text-on-secondary');
+      btn.classList.add('bg-primary', 'hover:bg-inverse-surface');
+      textSpan.textContent = 'RSVP & Add to Smart Schedule';
+    }
+  }
+
+  function toggleCardRSVP(btn) {
+    const isReserved = btn.getAttribute('data-reserved') === 'true';
+    if (!isReserved) {
+      btn.setAttribute('data-reserved', 'true');
+      btn.classList.remove('bg-surface-container-high', 'text-on-surface');
+      btn.classList.add('bg-secondary-fixed', 'text-on-secondary-fixed');
+      btn.innerHTML = '<span class="material-symbols-outlined text-[16px]">check</span><span>Saved</span>';
+    } else {
+      btn.setAttribute('data-reserved', 'false');
+      btn.classList.remove('bg-secondary-fixed', 'text-on-secondary-fixed');
+      btn.classList.add('bg-surface-container-high', 'text-on-surface');
+      btn.innerHTML = '<span class="material-symbols-outlined text-[16px]">add_circle</span><span>Reserve</span>';
+    }
+  }
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.04)]" data-active-classes="text-secondary bg-surface-container-highest/60 rounded-xl"><div class="flex justify-around items-center h-16 px-space-sm"><a class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 px-2.5 rounded-lg text-on-surface-variant hover:text-on-surface transition-all" data-path="campus-access" href="#"><span class="material-symbols-outlined text-[22px]">key</span><span class="font-label-sm text-label-sm mt-0.5">Access</span></a><a class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 px-2.5 rounded-lg text-on-surface-variant hover:text-on-surface transition-all" data-path="attendance-timetable" href="#"><span class="material-symbols-outlined text-[22px]">check_circle</span><span class="font-label-sm text-label-sm mt-0.5">Attendance</span></a><a class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 px-2.5 rounded-lg text-on-surface-variant hover:text-on-surface transition-all" data-path="safety-sos" href="#"><span class="material-symbols-outlined text-[22px]">shield_with_heart</span><span class="font-label-sm text-label-sm mt-0.5">Safety</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 px-2.5 transition-all text-secondary bg-surface-container-highest/60 rounded-xl" data-path="campus-pulse-events" href="#"><span class="material-symbols-outlined text-[22px]">event_available</span><span class="font-label-sm text-label-sm mt-0.5">Events</span></a></div></nav></body></html>

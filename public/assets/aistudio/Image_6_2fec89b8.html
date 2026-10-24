@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><title>Uni Connect</title><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "secondary-fixed-dim": "#c3c0ff", "primary-fixed": "#dae2fd", "on-surface": "#0b1c30", "on-tertiary-container": "#0090a9", "on-secondary-fixed-variant": "#3323cc", "surface-container-lowest": "#ffffff", "inverse-surface": "#213145", "surface": "#f8f9ff", "on-tertiary": "#ffffff", "on-secondary-fixed": "#0f0069", "primary-fixed-dim": "#bec6e0", "tertiary-fixed-dim": "#4cd7f6", "on-error-container": "#93000a", "surface-container-highest": "#d3e4fe", "surface-container": "#e5eeff", "on-tertiary-fixed-variant": "#004e5c", "surface-tint": "#565e74", "surface-dim": "#cbdbf5", "surface-container-low": "#eff4ff", "secondary-fixed": "#e2dfff", "on-primary-container": "#7c839b", "on-error": "#ffffff", "tertiary-fixed": "#acedff", "background": "#f8f9ff", "surface-container-high": "#dce9ff", "error": "#ba1a1a", "primary-container": "#131b2e", "on-surface-variant": "#45464d", "inverse-on-surface": "#eaf1ff", "tertiary": "#000000", "secondary": "#4b41e1", "on-primary-fixed": "#131b2e", "tertiary-container": "#001f26", "on-secondary-container": "#fffbff", "outline-variant": "#c6c6cd", "on-primary": "#ffffff", "outline": "#76777d", "inverse-primary": "#bec6e0", "surface-bright": "#f8f9ff", "on-secondary": "#ffffff", "secondary-container": "#645efb", "on-primary-fixed-variant": "#3f465c", "on-background": "#0b1c30", "primary": "#000000", "error-container": "#ffdad6", "on-tertiary-fixed": "#001f26", "surface-variant": "#d3e4fe" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-xl": "1.5rem", "gutter-tablet": "1.25rem", "margin-desktop": "2rem", "space-md": "0.75rem", "margin-tablet": "1.5rem", "margin": "1rem", "gutter": "1rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "space-lg": "1rem", "gutter-desktop": "1.5rem" }, fontFamily: { "label-md": ["JetBrains Mono"], "label-sm": ["JetBrains Mono"], "headline-lg": ["Inter"], "body-sm": ["Inter"], "headline-md": ["Inter"], "body-md": ["Inter"], "headline-xl": ["Inter"], "headline-sm": ["Inter"], "body-lg": ["Inter"], "headline-xl-mobile": ["Inter"] }, fontSize: { "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.02em", fontWeight: "500" }], "label-sm": ["10px", { lineHeight: "14px", letterSpacing: "0.04em", fontWeight: "500" }], "headline-lg": ["24px", { lineHeight: "32px", letterSpacing: "-0.015em", fontWeight: "600" }], "body-sm": ["12px", { lineHeight: "16px", fontWeight: "400" }], "headline-md": ["20px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "600" }], "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }], "headline-xl": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700" }], "headline-sm": ["16px", { lineHeight: "24px", letterSpacing: "-0.005em", fontWeight: "600" }], "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }], "headline-xl-mobile": ["26px", { lineHeight: "32px", letterSpacing: "-0.015em", fontWeight: "700" }] } } } };</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#f8f9ff;color:#0b1c30;}body{overscroll-behavior:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface min-h-screen flex flex-col antialiased selection:bg-secondary-fixed selection:text-on-secondary-fixed"><header class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)] pt-safe"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><img alt="Uni Connect Logo" class="h-8 w-auto object-contain shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLGp5arT1RL522iyZ3EpwemWjDRI1_UM8t9tAIvywgygpl_mbjGNVtQKiU9qZ6BRd5wfbiwF85qvXQYRBG13hkzQGJ-OSFhhXR5nHgGdcUYqtRec976WyX3LfMTIWqQimWcki91SZ-33fzoA8hR7VnESM518dq7JuP2V9ZhczmdoQCt_4aDkA6uLSMyho4oC9u7_LtPxd4SyOmq__EkMgj_ffH5CljmtNZ2xhGBH-pFepI3erepqyy"/><div class="flex flex-col min-w-0"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight truncate">Uni Connect</span></div><div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface-container-high/60 max-w-fit"><span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse shrink-0"></span><span class="font-label-sm text-label-sm text-secondary truncate">Wi-Fi Connected • Strong</span></div></div></div><div class="flex items-center gap-space-xs shrink-0"><button aria-label="Notifications" class="w-11 h-11 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors relative"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface"></span></button><div class="p-0.5 rounded-full ring-1 ring-outline-variant/30"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDt-pNI22gUvuKJ2GDkQFkabxL1UIJeiEghHlKXYOe7QO7ImmZfzrKshHP-a-wMn1S5hpyJKepdTuahSl06eXUaEFqGirG7vC4GCDfKAB7vA0dHzUYHUuqF8SRgV4CM7kr1AiTz1P8srPSkd8uPScBW1y0I7AZVhJklAWLW1LDrg3JaejHkeeLC00XgEPWt26l5Twhh58C7eAImYpgCLgEPvA0_3OEvj0nzYFxSshFOeKmD__GcQhtE"/></div></div></div></header><main class="flex flex-col relative w-full px-margin pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full gap-space-lg">
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Academic Term 2024–25</span>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Automated Attendance</h1>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed shadow-sm">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-sm text-label-sm font-semibold">Beacon Synced</span>
+</div>
+</div>
+<div class="relative overflow-hidden rounded-xl bg-surface-container-lowest shadow-md p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between gap-space-sm flex-wrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container/15 text-secondary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+        PRESENT • AUTO-SIGNED IN
+      </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">wifi</span>
+        Beacon: TH-AP-04 (RSSI: -48dBm)
+      </span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-start justify-between gap-2">
+<div>
+<span class="font-label-md text-label-md text-secondary font-semibold">CS302</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Distributed Cloud Systems</h2>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-on-surface shrink-0">
+<span class="material-symbols-outlined text-[24px]">terminal</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm mt-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+          08:00 AM – 11:00 AM (3 hrs)
+        </span>
+<span>•</span>
+<span class="inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">pin_drop</span>
+          Turing Hall 102
+        </span>
+</div>
+</div>
+<div class="rounded-lg bg-surface-container-low p-space-md flex flex-col gap-space-xs">
+<div class="flex items-center justify-between text-on-surface">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-secondary">timelapse</span>
+<span class="font-headline-sm text-headline-sm">1h 48m in class</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">60% Elapsed</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-secondary rounded-full transition-all duration-700" style="width: 60%;"></div>
+</div>
+<div class="flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant mt-1">
+<span>Checked In: 08:02 AM</span>
+<span>Target: 11:00 AM</span>
+</div>
+</div>
+<div class="flex items-start gap-space-sm p-space-sm rounded-lg bg-surface-container/60">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">sensors</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+        Auto checkout will trigger at 11:00 AM or when your distance departures the classroom perimeter threshold (&gt;70% RSSI decay).
+      </p>
+</div>
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-2">
+<div class="flex -space-x-1.5 overflow-hidden">
+<img class="inline-block h-6 w-6 rounded-full ring-2 ring-surface-container-lowest object-cover" data-alt="Close up student portrait with glasses smiling in a modern campus lecture hall natural light soft blue tone" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMA4knf0wbRy8ZjiBn2TtzNIc9ap7A451zTsKWlvXn_E6-b3BmUmIJhumjSTtUTjSnlBO326Eddd8dE7ziYXvogf7-E_5Eawb2b2Bzms6nUKjQ6zC8Uh2LV0fdhIcsP7JmyzrqaiTY1uLjq-6YY3nAx69gTWumuI7QSJVHpDDNEfOfpOcP9Q4UyYSDaxS4J0LGTk8-XcT4jkP9GD9uZZKt1zmaSeyCdDAn1I9Jm8h1ICoOEDE_2W-a"/>
+<img class="inline-block h-6 w-6 rounded-full ring-2 ring-surface-container-lowest object-cover" data-alt="Student with laptop taking notes in illuminated futuristic lecture auditorium warm ambient light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDx93FgD_ZgDtyJpxOf5r2EtfZd_r1AHigO5zLJIbpsebRI7_6SNOhG9ETrlFRR3sPBohbbRmQE3u8dWwGRLy1Ci22PmwbN-ENvho3cxoMwdqTk7Z-a-OM18x6ggp9R2Jwdz0afyqmfDopBZ9dt9kzlnYSFGRQRxLd8tEgmLH2UZZB3CuXOqv2eWbo3EHBKhoHXpdSYhX22w0OsXIv26R3cKxqfhkhL-LUqVYx4mqoBeQcny6zpYp_H"/>
+<img class="inline-block h-6 w-6 rounded-full ring-2 ring-surface-container-lowest object-cover" data-alt="Young female engineering student working on code tablet in glass university lab room daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDN3OhQtehpWPbx0X1c6Po3kU7_5hrb0tCQJ-ADRHGTk-A3VXKPmFUJHZnNoY7v0FDzJtR7wWhYQZon_LPKDOl3wZlKCIXq5sj65N_fnlFcFchzgwmDb049RMdt-zonidGVdMJHb8jpYegRTg4p0AJZX2hUNApHBresWOm6QPCgCFvqSxxziqqEpMo_iYOoMg7CTh1EqjLhT2wZX7EsgJfkanf-cSC3aKke2A4bwRubsWItvpaWhMla"/>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Dr. Vance + 37 peers</span>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-body-sm text-body-sm font-semibold transition-colors flex items-center gap-1">
+<span>Lab Notes</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-md">
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold uppercase">Room Density</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">group</span>
+</div>
+<div class="my-2">
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold">38</span>
+<span class="font-label-md text-label-md text-on-surface-variant">/ 45 Seats</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-medium">84% Capacity • High</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 84.4%;"></div>
+</div>
+</div>
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold uppercase">5G Telemetry</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">cell_tower</span>
+</div>
+<div class="my-2">
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold">4.2</span>
+<span class="font-label-md text-label-md text-on-surface-variant">ms latency</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Mesh Beacon Active</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="h-1.5 flex-1 rounded-full bg-secondary"></span>
+<span class="h-1.5 flex-1 rounded-full bg-secondary"></span>
+<span class="h-1.5 flex-1 rounded-full bg-secondary"></span>
+<span class="h-1.5 flex-1 rounded-full bg-secondary"></span>
+</div>
+</div>
+</div>
+<div class="rounded-xl bg-surface-container-lowest p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Term Attendance</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Target minimum requirement: 85%</p>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold">Exemplary</span>
+</div>
+<div class="flex items-center gap-space-lg py-1">
+<div class="relative w-24 h-24 shrink-0 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container-highest" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-secondary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="96.5, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<div class="absolute flex flex-col items-center justify-center text-center">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">96.5<span class="text-[12px] font-normal">%</span></span>
+</div>
+</div>
+<div class="flex flex-col gap-2 flex-1 justify-center">
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+            Attended Sessions
+          </span>
+<span class="font-label-md text-label-md font-bold text-on-surface">42</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed-dim"></span>
+            Excused Absences
+          </span>
+<span class="font-label-md text-label-md font-bold text-on-surface">1</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-surface-tint"></span>
+            Unexcused Missed
+          </span>
+<span class="font-label-md text-label-md font-bold text-on-surface">0</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Today's Schedule</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Thursday • Week 8</span>
+</div>
+<div class="flex flex-col gap-space-sm">
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex items-center justify-between gap-space-sm transition-all hover:bg-surface-container-low/40">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">laptop_chromebook</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">Distributed Cloud Systems</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">08:00 AM – 11:00 AM • Turing Hall 102</span>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-secondary-container/15 text-secondary font-label-sm text-label-sm font-semibold shrink-0">
+          Active
+        </span>
+</div>
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex items-center justify-between gap-space-sm transition-all hover:bg-surface-container-low/40">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high text-on-surface flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">functions</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">Linear Algebra &amp; Graph Theory</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">01:00 PM – 02:30 PM • Gauss Annex 304</span>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-semibold">
+            Beacon Ready
+          </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">In 2h 00m</span>
+</div>
+</div>
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex items-center justify-between gap-space-sm transition-all hover:bg-surface-container-low/40">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high text-on-surface flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">forum</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">Technical Communications</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">03:00 PM – 04:30 PM • Humanities Hall 12</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm shrink-0">
+          Upcoming
+        </span>
+</div>
+</div>
+</div>
+<div class="rounded-xl bg-surface-container-low p-space-md flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[22px]">verified_user</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Auto-Sign In Policy</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Validated via physical hardware cryptographic tokens</span>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-sm text-body-sm font-semibold shadow-sm hover:bg-surface transition-colors" onclick="this.textContent = this.textContent === 'Active' ? 'Paused' : 'Active'">
+      Active
+    </button>
+</div>
+</div></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.04)]" data-active-classes="text-secondary bg-surface-container-highest/60 rounded-xl"><div class="flex justify-around items-center h-16 px-space-sm"><a class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 px-2.5 rounded-lg text-on-surface-variant hover:text-on-surface transition-all" data-path="campus-access" href="#"><span class="material-symbols-outlined text-[22px]">key</span><span class="font-label-sm text-label-sm mt-0.5">Access</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 px-2.5 transition-all text-secondary bg-surface-container-highest/60 rounded-xl" data-path="attendance-timetable" href="#"><span class="material-symbols-outlined text-[22px]">check_circle</span><span class="font-label-sm text-label-sm mt-0.5">Attendance</span></a><a class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 px-2.5 rounded-lg text-on-surface-variant hover:text-on-surface transition-all" data-path="safety-sos" href="#"><span class="material-symbols-outlined text-[22px]">shield_with_heart</span><span class="font-label-sm text-label-sm mt-0.5">Safety</span></a><a class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 px-2.5 rounded-lg text-on-surface-variant hover:text-on-surface transition-all" data-path="campus-pulse-events" href="#"><span class="material-symbols-outlined text-[22px]">event_available</span><span class="font-label-sm text-label-sm mt-0.5">Events</span></a></div></nav></body></html>

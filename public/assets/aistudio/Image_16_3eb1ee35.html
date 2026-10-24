@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><title>Uni Connect</title><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "secondary-fixed-dim": "#c3c0ff", "primary-fixed": "#dae2fd", "on-surface": "#0b1c30", "on-tertiary-container": "#0090a9", "on-secondary-fixed-variant": "#3323cc", "surface-container-lowest": "#ffffff", "inverse-surface": "#213145", "surface": "#f8f9ff", "on-tertiary": "#ffffff", "on-secondary-fixed": "#0f0069", "primary-fixed-dim": "#bec6e0", "tertiary-fixed-dim": "#4cd7f6", "on-error-container": "#93000a", "surface-container-highest": "#d3e4fe", "surface-container": "#e5eeff", "on-tertiary-fixed-variant": "#004e5c", "surface-tint": "#565e74", "surface-dim": "#cbdbf5", "surface-container-low": "#eff4ff", "secondary-fixed": "#e2dfff", "on-primary-container": "#7c839b", "on-error": "#ffffff", "tertiary-fixed": "#acedff", "background": "#f8f9ff", "surface-container-high": "#dce9ff", "error": "#ba1a1a", "primary-container": "#131b2e", "on-surface-variant": "#45464d", "inverse-on-surface": "#eaf1ff", "tertiary": "#000000", "secondary": "#4b41e1", "on-primary-fixed": "#131b2e", "tertiary-container": "#001f26", "on-secondary-container": "#fffbff", "outline-variant": "#c6c6cd", "on-primary": "#ffffff", "outline": "#76777d", "inverse-primary": "#bec6e0", "surface-bright": "#f8f9ff", "on-secondary": "#ffffff", "secondary-container": "#645efb", "on-primary-fixed-variant": "#3f465c", "on-background": "#0b1c30", "primary": "#000000", "error-container": "#ffdad6", "on-tertiary-fixed": "#001f26", "surface-variant": "#d3e4fe" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-xl": "1.5rem", "gutter-tablet": "1.25rem", "margin-desktop": "2rem", "space-md": "0.75rem", "margin-tablet": "1.5rem", "margin": "1rem", "gutter": "1rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "space-lg": "1rem", "gutter-desktop": "1.5rem" }, fontFamily: { "label-md": ["JetBrains Mono"], "label-sm": ["JetBrains Mono"], "headline-lg": ["Inter"], "body-sm": ["Inter"], "headline-md": ["Inter"], "body-md": ["Inter"], "headline-xl": ["Inter"], "headline-sm": ["Inter"], "body-lg": ["Inter"], "headline-xl-mobile": ["Inter"] }, fontSize: { "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.02em", fontWeight: "500" }], "label-sm": ["10px", { lineHeight: "14px", letterSpacing: "0.04em", fontWeight: "500" }], "headline-lg": ["24px", { lineHeight: "32px", letterSpacing: "-0.015em", fontWeight: "600" }], "body-sm": ["12px", { lineHeight: "16px", fontWeight: "400" }], "headline-md": ["20px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "600" }], "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }], "headline-xl": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700" }], "headline-sm": ["16px", { lineHeight: "24px", letterSpacing: "-0.005em", fontWeight: "600" }], "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }], "headline-xl-mobile": ["26px", { lineHeight: "32px", letterSpacing: "-0.015em", fontWeight: "700" }] } } } };</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#f8f9ff;color:#0b1c30;}body{overscroll-behavior:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface min-h-screen flex flex-col antialiased selection:bg-secondary-fixed selection:text-on-secondary-fixed"><header class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)] pt-safe"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><img alt="Uni Connect Logo" class="h-8 w-auto object-contain shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLGp5arT1RL522iyZ3EpwemWjDRI1_UM8t9tAIvywgygpl_mbjGNVtQKiU9qZ6BRd5wfbiwF85qvXQYRBG13hkzQGJ-OSFhhXR5nHgGdcUYqtRec976WyX3LfMTIWqQimWcki91SZ-33fzoA8hR7VnESM518dq7JuP2V9ZhczmdoQCt_4aDkA6uLSMyho4oC9u7_LtPxd4SyOmq__EkMgj_ffH5CljmtNZ2xhGBH-pFepI3erepqyy"/><div class="flex flex-col min-w-0"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight truncate">Uni Connect</span></div><div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface-container-high/60 max-w-fit"><span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse shrink-0"></span><span class="font-label-sm text-label-sm text-secondary truncate">Wi-Fi Connected • Strong</span></div></div></div><div class="flex items-center gap-space-xs shrink-0"><button aria-label="Notifications" class="w-11 h-11 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors relative"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface"></span></button><div class="p-0.5 rounded-full ring-1 ring-outline-variant/30"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDt-pNI22gUvuKJ2GDkQFkabxL1UIJeiEghHlKXYOe7QO7ImmZfzrKshHP-a-wMn1S5hpyJKepdTuahSl06eXUaEFqGirG7vC4GCDfKAB7vA0dHzUYHUuqF8SRgV4CM7kr1AiTz1P8srPSkd8uPScBW1y0I7AZVhJklAWLW1LDrg3JaejHkeeLC00XgEPWt26l5Twhh58C7eAImYpgCLgEPvA0_3OEvj0nzYFxSshFOeKmD__GcQhtE"/></div></div></div></header><main class="flex flex-col relative w-full px-margin pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full pb-24 overflow-y-auto">
+<!-- Privacy & Telemetry Telemetric Banner -->
+<div class="w-full bg-surface-container-high/70 rounded-xl p-space-md mb-space-md shadow-sm">
+<div class="flex items-start gap-space-sm">
+<div class="w-7 h-7 rounded-full bg-secondary-fixed flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-secondary text-[18px]">sensors</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Spatial Mesh v4.2</span>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-surface-container-lowest text-on-surface-variant font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-ping"></span>
+            Syncing
+          </span>
+</div>
+<p class="font-headline-sm text-headline-sm text-on-surface mt-0.5 leading-snug">
+          Live Facility Density &amp; Study Spaces
+        </p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+          Privacy-Safe Telemetry • Anonymous RF density without camera or device tracking
+        </p>
+</div>
+</div>
+</div>
+<!-- Filter & Sort Strip -->
+<div class="flex flex-col gap-space-sm mb-space-lg">
+<!-- Category Filter Pills -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1 -mx-margin px-margin no-scrollbar">
+<button class="facility-filter-btn px-3.5 py-2 rounded-full font-label-md text-label-md bg-primary text-on-primary shadow-sm whitespace-nowrap transition-all" data-filter="all">
+        All Facilities
+      </button>
+<button class="facility-filter-btn px-3.5 py-2 rounded-full font-label-md text-label-md bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container whitespace-nowrap shadow-sm transition-all" data-filter="study">
+        Study &amp; Quiet Rooms
+      </button>
+<button class="facility-filter-btn px-3.5 py-2 rounded-full font-label-md text-label-md bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container whitespace-nowrap shadow-sm transition-all" data-filter="sports">
+        Sports &amp; Gym
+      </button>
+<button class="facility-filter-btn px-3.5 py-2 rounded-full font-label-md text-label-md bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container whitespace-nowrap shadow-sm transition-all" data-filter="dining">
+        Dining &amp; Social
+      </button>
+</div>
+<!-- Quick Sorting & Status Filter Indicator -->
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-secondary">tune</span>
+<span class="font-label-sm text-label-sm">Sort: Least Crowded First</span>
+</div>
+<button class="flex items-center gap-1 font-label-sm text-label-sm text-secondary bg-secondary-fixed/50 px-2.5 py-1 rounded-full hover:bg-secondary-fixed transition-colors" id="toggle-favorites-btn">
+<span class="material-symbols-outlined text-[14px]">star</span>
+<span>My Saved (3)</span>
+</button>
+</div>
+</div>
+<!-- Top Recommendation: Calm Haven Right Now -->
+<div class="w-full bg-surface-container-lowest rounded-xl p-space-md mb-space-lg shadow-sm">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[20px]">verified</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wide text-secondary">Optimal Study Choice</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-semibold">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container"></span>
+        Calm &amp; Spacious
+      </span>
+</div>
+<div class="flex gap-space-md items-start">
+<div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A modern serene university glass-walled study pavilion surrounded by lush green trees, bright daylight casting soft shadows on ergonomic oak desks, empty chairs inviting students, architectural photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzzR6_yoEThvUTwqLbf5tl0fMkvzTXTc3FNHoADxgeYqnv9X2JjPjbE0wrRS7ejgrVJDrxaxF0PBO2sT5Gab_aIVx_QKCXBx5HBK_a21UBJ33ws00W5Dv6mHKiI4HzkGKwJjZyYvg73QKoAn_DA8MYFqiQ1ifDoyTkc5idsvm0Dj4gZQ0DGiiY212ZfincET09oKBzgTQnb6oZfoEB19kkoH-AdHAYf94-VRiOwSudWxyuz1MjafUH"/>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">West Campus Quiet Pavilion</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">North Quad • Building 4B (Floor 2)</p>
+<div class="flex items-center gap-2 mt-2">
+<span class="inline-flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px] text-secondary">schedule</span>
+            Calm until ~3:30 PM
+          </span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="inline-flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px] text-secondary">wifi</span>
+            Wi-Fi 6E
+          </span>
+</div>
+</div>
+</div>
+<!-- Micro Highlights -->
+<div class="grid grid-cols-3 gap-2 mt-space-md pt-space-sm bg-surface-container-low rounded-lg p-2.5">
+<div class="flex flex-col items-center text-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Desk Outlets</span>
+<span class="font-headline-sm text-headline-sm text-on-surface mt-0.5">Abundant</span>
+</div>
+<div class="flex flex-col items-center text-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Sound Level</span>
+<span class="font-headline-sm text-headline-sm text-on-surface mt-0.5">Silent Zone</span>
+</div>
+<div class="flex flex-col items-center text-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Natural Light</span>
+<span class="font-headline-sm text-headline-sm text-on-surface mt-0.5">High / Sky</span>
+</div>
+</div>
+<div class="flex items-center justify-between gap-space-sm mt-space-md">
+<button class="flex-1 h-10 rounded-lg bg-primary text-on-primary font-body-md text-body-md font-medium flex items-center justify-center gap-2 hover:bg-primary-container transition-all">
+<span class="material-symbols-outlined text-[18px]">near_me</span>
+        Walk There (3 min)
+      </button>
+<button aria-label="Save facility" class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary hover:bg-secondary-fixed transition-colors">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+</button>
+</div>
+</div>
+<!-- Live Facility Cards Section -->
+<div class="flex flex-col gap-space-md" id="facility-cards-container">
+<!-- 1. Science & Engineering 24/7 Study Commons -->
+<div class="facility-card w-full bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all" data-category="study">
+<div class="flex items-start justify-between gap-2">
+<div class="min-w-0">
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Science 24/7 Study Commons</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Level 1 Atrium &amp; Pod Desks</p>
+</div>
+<span class="shrink-0 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span>
+          Calm &amp; Spacious
+        </span>
+</div>
+<!-- Vibe & Atmosphere -->
+<div class="flex items-center gap-3 mt-space-sm text-on-surface-variant">
+<div class="flex items-center gap-1 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">volume_mute</span>
+<span>Whisper quiet</span>
+</div>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<div class="flex items-center gap-1 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">event_seat</span>
+<span>Plenty of open seating</span>
+</div>
+</div>
+<!-- Zone Breakdown -->
+<div class="flex items-center gap-2 mt-space-md pt-space-xs">
+<div class="flex-1 bg-surface-container-low p-2 rounded-lg text-center">
+<span class="block font-label-sm text-label-sm text-on-surface-variant">Focus Cubicles</span>
+<span class="font-headline-sm text-headline-sm text-on-surface text-[14px]">Open Spots</span>
+</div>
+<div class="flex-1 bg-surface-container-low p-2 rounded-lg text-center">
+<span class="block font-label-sm text-label-sm text-on-surface-variant">Group Whiteboards</span>
+<span class="font-headline-sm text-headline-sm text-on-surface text-[14px]">Available</span>
+</div>
+</div>
+</div>
+<!-- 2. Badminton Court Arena -->
+<div class="facility-card w-full bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all" data-category="sports">
+<div class="flex items-start justify-between gap-2">
+<div class="min-w-0">
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Badminton Courts Arena</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">North Sports Complex (Courts 1–6)</p>
+</div>
+<span class="shrink-0 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+          Moderate / Balanced
+        </span>
+</div>
+<div class="mt-space-sm bg-surface-container-low rounded-lg p-2.5 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">sports_tennis</span>
+<div>
+<span class="block font-label-md text-label-md text-on-surface font-semibold">2 Walk-in Courts Available</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Standard 30-min rotation schedule</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-secondary bg-surface-container-lowest px-2 py-1 rounded-full shadow-sm">
+          Next turn ~15m
+        </span>
+</div>
+</div>
+<!-- 3. Main Campus Recreation Gym & Fitness Studio -->
+<div class="facility-card w-full bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all" data-category="sports">
+<div class="flex items-start justify-between gap-2">
+<div class="min-w-0">
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Main Recreation Gym</h3>
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Wellness Hub &amp; Weight Room</p>
+</div>
+<span class="shrink-0 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-highest text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
+          Lively / Busy
+        </span>
+</div>
+<!-- Micro Sub-zones Pill Matrix -->
+<div class="grid grid-cols-2 gap-2 mt-space-sm">
+<div class="p-2 rounded-lg bg-surface-container-low flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface">Cardio Deck</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant">Moderate</span>
+</div>
+<div class="p-2 rounded-lg bg-surface-container-low flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface">Free Weights</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface font-medium">Busy</span>
+</div>
+</div>
+<!-- Trend Rhythm Graphic -->
+<div class="mt-space-md pt-space-xs">
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Today's Crowd Rhythm</span>
+<span class="font-label-sm text-label-sm text-secondary">Easing after 8:30 PM</span>
+</div>
+<!-- Density Rhythm Visual Bar -->
+<div class="w-full bg-surface-container-high h-2.5 rounded-full overflow-hidden flex">
+<div class="bg-tertiary-fixed h-full" style="width: 25%" title="Morning: Calm"></div>
+<div class="bg-surface-container h-full" style="width: 25%" title="Midday: Moderate"></div>
+<div class="bg-secondary-container h-full" style="width: 35%" title="Now: Lively"></div>
+<div class="bg-tertiary-fixed h-full" style="width: 15%" title="Late Night: Calm"></div>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant mt-1">
+<span>7 AM</span>
+<span>12 PM</span>
+<span class="font-semibold text-secondary">Now (Peak)</span>
+<span>10 PM</span>
+</div>
+</div>
+</div>
+<!-- 4. Law & Humanities Library - 3rd Floor Silent Stacks -->
+<div class="facility-card w-full bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all" data-category="study">
+<div class="flex items-start justify-between gap-2">
+<div class="min-w-0">
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Law Library 3rd Fl. Silent Stacks</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Deep Research &amp; Monograph Hall</p>
+</div>
+<span class="shrink-0 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+          Near Peak / Full
+        </span>
+</div>
+<!-- Smart Routing Tip -->
+<div class="mt-space-sm p-space-sm bg-surface-container-low rounded-lg flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-[18px] shrink-0">tips_and_updates</span>
+<span class="font-body-sm text-body-sm">
+          Tip: Desks full on 3rd floor. Try the <strong>4th Floor South Annex</strong> for open reading nooks.
+        </span>
+</div>
+</div>
+<!-- 5. Central Atrium Student Lounge & Cafe -->
+<div class="facility-card w-full bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all" data-category="dining">
+<div class="flex items-start justify-between gap-2">
+<div class="min-w-0">
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Central Atrium &amp; Cafe</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Dining, Espresso Bar &amp; Social Benches</p>
+</div>
+<span class="shrink-0 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-highest text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
+          Lively / Busy
+        </span>
+</div>
+<div class="flex items-center justify-between mt-space-sm text-on-surface-variant">
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">local_cafe</span>
+<span>Cafe Line: ~4 min quick service</span>
+</div>
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">groups</span>
+<span>High conversational buzz</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Detailed Hourly Rhythm Forecast Modal / Panel -->
+<div class="w-full bg-surface-container-lowest rounded-xl p-space-md mt-space-lg shadow-sm">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">analytics</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Facility Rhythm Predictor</h3>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Historic Pattern</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md">
+      Synthesized from anonymized campus Wi-Fi density trends over the past 4 weeks.
+    </p>
+<!-- Hourly Density Bar Grid -->
+<div class="flex items-end justify-between gap-1 h-28 pt-2 px-1">
+<!-- 8 AM -->
+<div class="flex flex-col items-center flex-1 gap-1">
+<span class="font-label-sm text-[9px] text-on-surface-variant">Low</span>
+<div class="w-full bg-tertiary-fixed rounded-t-sm" style="height: 25%"></div>
+<span class="font-label-sm text-[10px] text-on-surface-variant">08:00</span>
+</div>
+<!-- 10 AM -->
+<div class="flex flex-col items-center flex-1 gap-1">
+<span class="font-label-sm text-[9px] text-on-surface-variant">Mod</span>
+<div class="w-full bg-surface-container-high rounded-t-sm" style="height: 48%"></div>
+<span class="font-label-sm text-[10px] text-on-surface-variant">10:00</span>
+</div>
+<!-- 12 PM -->
+<div class="flex flex-col items-center flex-1 gap-1">
+<span class="font-label-sm text-[9px] text-on-surface font-semibold">Peak</span>
+<div class="w-full bg-secondary rounded-t-sm" style="height: 85%"></div>
+<span class="font-label-sm text-[10px] text-on-surface-variant">12:00</span>
+</div>
+<!-- 2 PM -->
+<div class="flex flex-col items-center flex-1 gap-1">
+<span class="font-label-sm text-[9px] text-on-surface">Busy</span>
+<div class="w-full bg-secondary-container rounded-t-sm" style="height: 70%"></div>
+<span class="font-label-sm text-[10px] text-on-surface-variant">14:00</span>
+</div>
+<!-- 4 PM -->
+<div class="flex flex-col items-center flex-1 gap-1">
+<span class="font-label-sm text-[9px] text-on-surface">Busy</span>
+<div class="w-full bg-secondary-container rounded-t-sm" style="height: 65%"></div>
+<span class="font-label-sm text-[10px] text-on-surface-variant">16:00</span>
+</div>
+<!-- 6 PM -->
+<div class="flex flex-col items-center flex-1 gap-1">
+<span class="font-label-sm text-[9px] text-on-surface-variant">Mod</span>
+<div class="w-full bg-surface-container-high rounded-t-sm" style="height: 45%"></div>
+<span class="font-label-sm text-[10px] text-on-surface-variant">18:00</span>
+</div>
+<!-- 8 PM -->
+<div class="flex flex-col items-center flex-1 gap-1">
+<span class="font-label-sm text-[9px] text-on-surface-variant">Calm</span>
+<div class="w-full bg-tertiary-fixed rounded-t-sm" style="height: 20%"></div>
+<span class="font-label-sm text-[10px] text-on-surface-variant">20:00</span>
+</div>
+</div>
+</div>
+<!-- Smart "Notify Me When Calm" Alert Toggle -->
+<div class="w-full bg-surface-container-high/60 rounded-xl p-space-md mt-space-lg shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm min-w-0 pr-2">
+<div class="w-10 h-10 rounded-full bg-secondary text-on-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">notifications_active</span>
+</div>
+<div class="min-w-0">
+<h4 class="font-headline-sm text-headline-sm text-on-surface truncate">Smart Density Ping</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Alert me when Gym drops to Moderate or Calm</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" id="density-toggle" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-container-lowest after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<!-- Micro confirmation strip -->
+<div class="mt-space-sm pt-space-xs flex items-center gap-1.5 text-secondary font-label-sm text-label-sm" id="notify-status">
+<span class="material-symbols-outlined text-[16px]">notifications_paused</span>
+<span>Haptic nudge will trigger automatically once crowds ease</span>
+</div>
+</div>
+</div>
+<script>
+  // Filter pill interaction
+  const filterBtns = document.querySelectorAll('.facility-filter-btn');
+  const facilityCards = document.querySelectorAll('.facility-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => {
+        b.classList.remove('bg-primary', 'text-on-primary');
+        b.classList.add('bg-surface-container-lowest', 'text-on-surface-variant');
+      });
+      btn.classList.remove('bg-surface-container-lowest', 'text-on-surface-variant');
+      btn.classList.add('bg-primary', 'text-on-primary');
+
+      const filterValue = btn.getAttribute('data-filter');
+      facilityCards.forEach(card => {
+        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Toggle favorite trigger demo
+  const favBtn = document.getElementById('toggle-favorites-btn');
+  let favActive = false;
+  if (favBtn) {
+    favBtn.addEventListener('click', () => {
+      favActive = !favActive;
+      favBtn.classList.toggle('bg-secondary', favActive);
+      favBtn.classList.toggle('text-on-secondary', favActive);
+      favBtn.classList.toggle('bg-secondary-fixed/50', !favActive);
+      favBtn.classList.toggle('text-secondary', !favActive);
+    });
+  }
+
+  // Density Alert Toggle
+  const densityToggle = document.getElementById('density-toggle');
+  const notifyStatus = document.getElementById('notify-status');
+  if (densityToggle && notifyStatus) {
+    densityToggle.addEventListener('change', (e) => {
+      if (e.target.checked) {
+        notifyStatus.innerHTML = '<span class="material-symbols-outlined text-[16px]">notifications_paused</span><span>Haptic nudge will trigger automatically once crowds ease</span>';
+        notifyStatus.classList.remove('opacity-40');
+      } else {
+        notifyStatus.innerHTML = '<span class="material-symbols-outlined text-[16px]">notifications_off</span><span>Density notifications paused for today</span>';
+        notifyStatus.classList.add('opacity-40');
+      }
+    });
+  }
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.04)]" data-active-classes="text-secondary bg-surface-container-highest/60 rounded-xl"><div class="flex justify-around items-center h-16 px-space-sm"><a class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 px-2.5 rounded-lg text-on-surface-variant hover:text-on-surface transition-all" data-path="campus-access" href="#"><span class="material-symbols-outlined text-[22px]">key</span><span class="font-label-sm text-label-sm mt-0.5">Access</span></a><a class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 px-2.5 rounded-lg text-on-surface-variant hover:text-on-surface transition-all" data-path="attendance-timetable" href="#"><span class="material-symbols-outlined text-[22px]">check_circle</span><span class="font-label-sm text-label-sm mt-0.5">Attendance</span></a><a class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 px-2.5 rounded-lg text-on-surface-variant hover:text-on-surface transition-all" data-path="safety-sos" href="#"><span class="material-symbols-outlined text-[22px]">shield_with_heart</span><span class="font-label-sm text-label-sm mt-0.5">Safety</span></a><a class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 px-2.5 rounded-lg text-on-surface-variant hover:text-on-surface transition-all" data-path="campus-pulse-events" href="#"><span class="material-symbols-outlined text-[22px]">event_available</span><span class="font-label-sm text-label-sm mt-0.5">Events</span></a></div></nav>
+</body></html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_blank" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "surface-container-highest": "#d3e4fe", "inverse-surface": "#213145", "tertiary-fixed": "#acedff", "tertiary-fixed-dim": "#4cd7f6", "primary-fixed-dim": "#bec6e0", "inverse-primary": "#bec6e0", "surface-container-lowest": "#ffffff", "secondary-fixed-dim": "#c3c0ff", "on-background": "#0b1c30", "on-primary-fixed-variant": "#3f465c", "primary": "#000000", "surface-dim": "#cbdbf5", "secondary-container": "#645efb", "on-primary-container": "#7c839b", "surface": "#f8f9ff", "on-secondary-fixed": "#0f0069", "primary-fixed": "#dae2fd", "error-container": "#ffdad6", "on-tertiary-fixed": "#001f26", "error": "#ba1a1a", "on-secondary-fixed-variant": "#3323cc", "tertiary-container": "#001f26", "on-primary-fixed": "#131b2e", "surface-tint": "#565e74", "on-error": "#ffffff", "background": "#f8f9ff", "inverse-on-surface": "#eaf1ff", "on-error-container": "#93000a", "outline-variant": "#c6c6cd", "on-secondary": "#ffffff", "on-secondary-container": "#fffbff", "on-tertiary-fixed-variant": "#004e5c", "secondary": "#4b41e1", "surface-container-low": "#eff4ff", "on-surface-variant": "#45464d", "secondary-fixed": "#e2dfff", "on-tertiary-container": "#0090a9", "tertiary": "#000000", "on-surface": "#0b1c30", "on-primary": "#ffffff", "surface-container": "#e5eeff", "on-tertiary": "#ffffff", "surface-bright": "#f8f9ff", "surface-container-high": "#dce9ff", "surface-variant": "#d3e4fe", "outline": "#76777d", "primary-container": "#131b2e" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-sm": "0.5rem", "space-md": "0.75rem", "gutter-desktop": "1.5rem", "margin-desktop": "2rem", "gutter-tablet": "1.25rem", "margin": "1rem", "space-lg": "1rem", "space-xs": "0.25rem", "margin-tablet": "1.5rem", "space-xl": "1.5rem", "gutter": "1rem" }, fontFamily: { "body-lg": ["Inter"], "headline-md": ["Inter"], "label-sm": ["JetBrains Mono"], "body-sm": ["Inter"], "headline-xl": ["Inter"], "headline-sm": ["Inter"], "body-md": ["Inter"], "headline-lg": ["Inter"], "label-md": ["JetBrains Mono"], "headline-xl-mobile": ["Inter"] }, fontSize: { "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "500" }], "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }], "headline-xl-mobile": ["26px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface antialiased pt-safe pb-safe min-h-screen flex flex-col"><main class="flex-1 flex flex-col relative w-full bg-surface"><div class="flex flex-col w-full pb-8">
+<!-- Top Telemetry & Status Bar -->
+<div class="px-4 pt-2 pb-3 flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-medium">NODE: SEC-HUB-EAST // 04</span>
+</div>
+<div class="flex items-center space-x-1.5 px-2.5 py-1 bg-surface-container-high rounded-full">
+<span class="material-symbols-outlined text-secondary" style="font-size: 13px;">lock_clock</span>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface" id="terminal-clock">14:02:18 UTC</span>
+</div>
+</div>
+<!-- Shield Badge & Emblem -->
+<div class="px-4 flex flex-col items-center text-center mt-2">
+<div class="relative flex items-center justify-center w-20 h-20 mb-3">
+<div class="absolute inset-0 rounded-full bg-secondary-fixed opacity-40 blur-md animate-pulse"></div>
+<div class="relative flex items-center justify-center w-16 h-16 rounded-2xl bg-primary-container text-surface shadow-md">
+<span class="material-symbols-outlined text-secondary-fixed text-3xl" style="font-variation-settings: 'FILL' 1;">shield_person</span>
+<span class="material-symbols-outlined absolute -top-1 -right-1 text-tertiary-fixed text-base">verified</span>
+</div>
+</div>
+<div class="inline-flex items-center space-x-1.5 px-3 py-0.5 rounded-full bg-surface-container-highest mb-2">
+<span class="material-symbols-outlined text-error text-xs" style="font-variation-settings: 'FILL' 1;">security</span>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface uppercase tracking-wider">Tier 3+ Clearance Required</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-on-surface tracking-tight">Campus Operations &amp; Security Portal</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 max-w-xs">
+      Uni Connect Central Sentinel · High-Security Administrative Gateway
+    </p>
+</div>
+<!-- Main Security Panel (Glassmorphism & Crisp Container) -->
+<div class="mx-4 mt-5 p-5 rounded-2xl bg-surface-container-low shadow-sm flex flex-col space-y-5">
+<!-- Mode Switcher (Biometric vs Hardware Token) -->
+<div class="grid grid-cols-2 p-1 bg-surface-container rounded-xl gap-1">
+<button class="py-2 rounded-lg font-body-sm text-body-sm font-semibold bg-surface text-on-surface shadow-xs transition-all flex items-center justify-center space-x-1.5" id="tab-biometric" onclick="switchAuthTab('biometric')">
+<span class="material-symbols-outlined text-base">fingerprint</span>
+<span>Biometrics</span>
+</button>
+<button class="py-2 rounded-lg font-body-sm text-body-sm font-medium text-on-surface-variant hover:text-on-surface transition-all flex items-center justify-center space-x-1.5" id="tab-token" onclick="switchAuthTab('token')">
+<span class="material-symbols-outlined text-base">pin</span>
+<span>Credential PIN</span>
+</button>
+</div>
+<!-- Biometric Interactive Target View -->
+<div class="flex flex-col items-center py-2 transition-all" id="view-biometric">
+<div class="relative w-44 h-44 flex items-center justify-center">
+<!-- Pulse Rings -->
+<div class="absolute inset-0 rounded-full bg-secondary-fixed opacity-30 animate-ping" id="radar-pulse-1"></div>
+<div class="absolute inset-3 rounded-full bg-surface-container-highest animate-pulse" id="radar-pulse-2"></div>
+<!-- Interactive Biometric Pad -->
+<button class="relative z-10 w-28 h-28 rounded-full bg-primary-container text-surface flex flex-col items-center justify-center shadow-lg active:scale-95 transition-transform group" id="bio-scan-btn" onclick="triggerBiometricScan()">
+<span class="material-symbols-outlined text-4xl text-secondary-fixed group-hover:scale-110 transition-transform" id="scan-icon">fingerprint</span>
+<span class="font-label-sm text-label-sm mt-1 text-on-primary-container font-medium" id="scan-label">Touch to Scan</span>
+</button>
+<!-- Dynamic Laser Scanning Line (Simulated) -->
+<div class="absolute w-28 h-0.5 bg-tertiary-fixed opacity-0 rounded-full pointer-events-none transition-opacity duration-300" id="scan-line"></div>
+</div>
+<!-- Live Encryption & Enclave Tag -->
+<div class="mt-4 flex items-center space-x-2 px-3 py-1.5 rounded-full bg-surface-container-high">
+<span class="material-symbols-outlined text-secondary text-sm">memory</span>
+<span class="font-label-sm text-label-sm font-medium text-on-surface-variant">256-bit Hardware Enclave • TLS 1.3</span>
+</div>
+<!-- Quick Switch Facial Option -->
+<button class="mt-3 inline-flex items-center space-x-1 text-secondary font-label-md text-label-md font-semibold hover:underline" onclick="toggleFaceIdMode()">
+<span class="material-symbols-outlined text-sm">face</span>
+<span id="toggle-bio-text">Switch to Sentinel FaceID</span>
+</button>
+</div>
+<!-- Token / PIN Alternative Credentials View -->
+<div class="hidden flex-col space-y-4 py-1" id="view-token">
+<div>
+<label class="block font-label-sm text-label-sm font-semibold uppercase tracking-wider text-on-surface-variant mb-1">
+          University Admin Identity
+        </label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-lg">badge</span>
+<input class="w-full pl-9 pr-3 py-2.5 rounded-lg bg-surface text-on-surface font-label-md text-label-md focus:outline-none focus:bg-surface-container-lowest transition-colors shadow-xs" placeholder="e.g. ADM-0000-ROLE" type="text" value="ADM-8821-SEC"/>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-1">
+<label class="font-label-sm text-label-sm font-semibold uppercase tracking-wider text-on-surface-variant">
+            Hardware Enclave Token PIN
+          </label>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">RSA-SecurID</span>
+</div>
+<!-- Digit Mask Display -->
+<div class="grid grid-cols-6 gap-2">
+<input class="text-center py-2 rounded-lg bg-surface text-on-surface font-label-md text-label-md focus:outline-none focus:bg-surface-container-lowest shadow-xs font-bold" maxlength="1" type="password" value="8"/>
+<input class="text-center py-2 rounded-lg bg-surface text-on-surface font-label-md text-label-md focus:outline-none focus:bg-surface-container-lowest shadow-xs font-bold" maxlength="1" type="password" value="4"/>
+<input class="text-center py-2 rounded-lg bg-surface text-on-surface font-label-md text-label-md focus:outline-none focus:bg-surface-container-lowest shadow-xs font-bold" maxlength="1" type="password" value="1"/>
+<input class="text-center py-2 rounded-lg bg-surface text-on-surface font-label-md text-label-md focus:outline-none focus:bg-surface-container-lowest shadow-xs font-bold" maxlength="1" placeholder="•" type="password"/>
+<input class="text-center py-2 rounded-lg bg-surface text-on-surface font-label-md text-label-md focus:outline-none focus:bg-surface-container-lowest shadow-xs font-bold" maxlength="1" placeholder="•" type="password"/>
+<input class="text-center py-2 rounded-lg bg-surface text-on-surface font-label-md text-label-md focus:outline-none focus:bg-surface-container-lowest shadow-xs font-bold" maxlength="1" placeholder="•" type="password"/>
+</div>
+</div>
+<button class="w-full py-3 rounded-lg bg-primary text-on-primary font-body-sm text-body-sm font-semibold hover:bg-primary-container active:scale-[0.99] transition-all flex items-center justify-center space-x-2 shadow-xs" onclick="triggerPinAuth()">
+<span class="material-symbols-outlined text-base">key</span>
+<span>Authorize Cryptographic Token</span>
+</button>
+</div>
+<!-- Active Incident / Officer Quick Context Card -->
+<div class="p-3 rounded-xl bg-surface-container flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<div class="w-9 h-9 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed font-bold font-label-sm text-label-sm">
+          DS
+        </div>
+<div>
+<div class="font-body-sm text-body-sm font-semibold text-on-surface">Officer D. Sutton</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Shift: Alpha · Zone Central Lab</div>
+</div>
+</div>
+<button class="px-2.5 py-1.5 rounded-lg bg-surface text-on-surface font-label-sm text-label-sm font-medium hover:bg-surface-container-highest transition-colors flex items-center space-x-1" onclick="toggleOfficerQuickSwitch()">
+<span class="material-symbols-outlined text-xs">sync_alt</span>
+<span>Switch</span>
+</button>
+</div>
+</div>
+<!-- Real-time Haptic & Hardware Alert Toast Area -->
+<div class="mx-4 mt-3 hidden items-center justify-between px-3.5 py-2.5 rounded-xl bg-surface-container-highest transition-all animate-bounce" id="haptic-alert">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-secondary text-base" id="alert-icon">vibration</span>
+<span class="font-label-sm text-label-sm font-medium text-on-surface" id="alert-message">Haptic feedback synchronized with enclave.</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-sm cursor-pointer" onclick="dismissAlert()">close</span>
+</div>
+<!-- Safety & FERPA Statutory Audit Notice -->
+<div class="mx-4 mt-4 p-3.5 rounded-xl bg-surface-container-lowest shadow-xs flex items-start space-x-2.5">
+<span class="material-symbols-outlined text-outline text-base mt-0.5">policy</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+      Security Audit Notice: All authentication requests, biometric matches, and tactical camera stream requests are cryptographically signed and archived under <span class="text-on-surface font-medium">FERPA / Campus Safety Directive 404-B</span>.
+    </p>
+</div>
+<!-- Emergency Bypass Zone -->
+<div class="mx-4 mt-4 pt-3 flex flex-col space-y-2">
+<button class="w-full py-2.5 px-4 rounded-xl bg-error-container text-on-error-container font-body-sm text-body-sm font-semibold flex items-center justify-center space-x-2 active:scale-[0.98] transition-all" onclick="triggerEmergencyBypass()">
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">crisis_alert</span>
+<span>Declare Tactical Emergency Bypass</span>
+</button>
+<div class="flex items-center justify-center space-x-4 pt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Radio Dispatched: 462.550 MHz</span>
+<span class="inline-block w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">NOC Online</span>
+</div>
+</div>
+</div>
+<script>
+  // Live UTC Terminal Clock
+  function updateTerminalClock() {
+    const el = document.getElementById('terminal-clock');
+    if (!el) return;
+    const now = new Date();
+    const hrs = String(now.getUTCHours()).padStart(2, '0');
+    const mins = String(now.getUTCMinutes()).padStart(2, '0');
+    const secs = String(now.getUTCSeconds()).padStart(2, '0');
+    el.textContent = `${hrs}:${mins}:${secs} UTC`;
+  }
+  setInterval(updateTerminalClock, 1000);
+  updateTerminalClock();
+
+  // Tab Switching
+  function switchAuthTab(type) {
+    const bioTab = document.getElementById('tab-biometric');
+    const tokenTab = document.getElementById('tab-token');
+    const bioView = document.getElementById('view-biometric');
+    const tokenView = document.getElementById('view-token');
+
+    if (type === 'biometric') {
+      bioTab.className = "py-2 rounded-lg font-body-sm text-body-sm font-semibold bg-surface text-on-surface shadow-xs transition-all flex items-center justify-center space-x-1.5";
+      tokenTab.className = "py-2 rounded-lg font-body-sm text-body-sm font-medium text-on-surface-variant hover:text-on-surface transition-all flex items-center justify-center space-x-1.5";
+      bioView.classList.remove('hidden');
+      tokenView.classList.add('hidden');
+    } else {
+      tokenTab.className = "py-2 rounded-lg font-body-sm text-body-sm font-semibold bg-surface text-on-surface shadow-xs transition-all flex items-center justify-center space-x-1.5";
+      bioTab.className = "py-2 rounded-lg font-body-sm text-body-sm font-medium text-on-surface-variant hover:text-on-surface transition-all flex items-center justify-center space-x-1.5";
+      tokenView.classList.remove('hidden');
+      bioView.classList.add('hidden');
+    }
+  }
+
+  let isFaceMode = false;
+  function toggleFaceIdMode() {
+    isFaceMode = !isFaceMode;
+    const icon = document.getElementById('scan-icon');
+    const label = document.getElementById('scan-label');
+    const toggleText = document.getElementById('toggle-bio-text');
+
+    if (isFaceMode) {
+      icon.textContent = 'face';
+      label.textContent = 'Look at Sensor';
+      toggleText.textContent = 'Switch to TouchID Sensor';
+      showAlert('Sentinel FaceID optics initiated. Hold device at eye level.');
+    } else {
+      icon.textContent = 'fingerprint';
+      label.textContent = 'Touch to Scan';
+      toggleText.textContent = 'Switch to Sentinel FaceID';
+      showAlert('Capacitive biometric pad activated.');
+    }
+  }
+
+  function triggerBiometricScan() {
+    const label = document.getElementById('scan-label');
+    const scanLine = document.getElementById('scan-line');
+    const icon = document.getElementById('scan-icon');
+
+    label.textContent = 'Verifying...';
+    icon.classList.add('animate-pulse');
+    scanLine.classList.remove('opacity-0');
+    scanLine.classList.add('opacity-90');
+
+    // Simulate Hardware Verification Cycle
+    setTimeout(() => {
+      label.textContent = 'Authorized';
+      icon.textContent = 'check_circle';
+      icon.classList.remove('animate-pulse');
+      scanLine.classList.add('opacity-0');
+      showAlert('Biometric cryptographic hash matches Enclave: Clearance Confirmed.');
+    }, 1100);
+
+    setTimeout(() => {
+      if (!isFaceMode) {
+        icon.textContent = 'fingerprint';
+        label.textContent = 'Touch to Scan';
+      } else {
+        icon.textContent = 'face';
+        label.textContent = 'Look at Sensor';
+      }
+    }, 3200);
+  }
+
+  function triggerPinAuth() {
+    showAlert('Validating RSA-SecurID sync packet with Central Operations...');
+    setTimeout(() => {
+      showAlert('Token Accepted. Dispatch terminal unlock ready.');
+    }, 900);
+  }
+
+  function toggleOfficerQuickSwitch() {
+    showAlert('Officer Quick-Switch requested: Prompting supervisor override.');
+  }
+
+  function triggerEmergencyBypass() {
+    showAlert('CRITICAL: Tactical bypass code transmitted to Campus 911 dispatch.');
+  }
+
+  function showAlert(msg) {
+    const box = document.getElementById('haptic-alert');
+    const text = document.getElementById('alert-message');
+    text.textContent = msg;
+    box.classList.remove('hidden');
+    box.classList.add('flex');
+  }
+
+  function dismissAlert() {
+    const box = document.getElementById('haptic-alert');
+    box.classList.add('hidden');
+    box.classList.remove('flex');
+  }
+</script></main></body></html>

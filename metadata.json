@@ -1,0 +1,6 @@
+{
+  "name": "Uni Connect: Smart Campus OS & Security Sentinel",
+  "description": "Comprehensive smart campus operating system connecting students with automated beacon access, contactless attendance, emergency SOS, and campus operations security telemetry.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "surface-container-highest": "#d3e4fe", "inverse-surface": "#213145", "tertiary-fixed": "#acedff", "tertiary-fixed-dim": "#4cd7f6", "primary-fixed-dim": "#bec6e0", "inverse-primary": "#bec6e0", "surface-container-lowest": "#ffffff", "secondary-fixed-dim": "#c3c0ff", "on-background": "#0b1c30", "on-primary-fixed-variant": "#3f465c", "primary": "#000000", "surface-dim": "#cbdbf5", "secondary-container": "#645efb", "on-primary-container": "#7c839b", "surface": "#f8f9ff", "on-secondary-fixed": "#0f0069", "primary-fixed": "#dae2fd", "error-container": "#ffdad6", "on-tertiary-fixed": "#001f26", "error": "#ba1a1a", "on-secondary-fixed-variant": "#3323cc", "tertiary-container": "#001f26", "on-primary-fixed": "#131b2e", "surface-tint": "#565e74", "on-error": "#ffffff", "background": "#f8f9ff", "inverse-on-surface": "#eaf1ff", "on-error-container": "#93000a", "outline-variant": "#c6c6cd", "on-secondary": "#ffffff", "on-secondary-container": "#fffbff", "on-tertiary-fixed-variant": "#004e5c", "secondary": "#4b41e1", "surface-container-low": "#eff4ff", "on-surface-variant": "#45464d", "secondary-fixed": "#e2dfff", "on-tertiary-container": "#0090a9", "tertiary": "#000000", "on-surface": "#0b1c30", "on-primary": "#ffffff", "surface-container": "#e5eeff", "on-tertiary": "#ffffff", "surface-bright": "#f8f9ff", "surface-container-high": "#dce9ff", "surface-variant": "#d3e4fe", "outline": "#76777d", "primary-container": "#131b2e" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-sm": "0.5rem", "space-md": "0.75rem", "gutter-desktop": "1.5rem", "margin-desktop": "2rem", "gutter-tablet": "1.25rem", "margin": "1rem", "space-lg": "1rem", "space-xs": "0.25rem", "margin-tablet": "1.5rem", "space-xl": "1.5rem", "gutter": "1rem" }, fontFamily: { "body-lg": ["Inter"], "headline-md": ["Inter"], "label-sm": ["JetBrains Mono"], "body-sm": ["Inter"], "headline-xl": ["Inter"], "headline-sm": ["Inter"], "body-md": ["Inter"], "headline-lg": ["Inter"], "label-md": ["JetBrains Mono"], "headline-xl-mobile": ["Inter"] }, fontSize: { "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "500" }], "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }], "headline-xl-mobile": ["26px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface antialiased flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe"><div class="h-20 px-margin flex items-center justify-between gap-space-sm"><div class="flex flex-col justify-center min-w-0 flex-1"><div class="flex items-center gap-space-xs mb-0.5"><span class="material-symbols-outlined text-secondary text-[16px]">shield</span><span class="font-label-sm text-label-sm uppercase text-secondary font-semibold tracking-wider truncate">Campus Operations &amp; Security Hub</span></div><div class="flex items-center gap-space-sm"><h1 class="font-headline-sm text-headline-sm text-on-surface truncate">Headcount And Zones</h1><span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm shrink-0"><span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>Sensors &amp; Feeds Online</span></div></div><div class="flex items-center gap-space-xs shrink-0"><div class="flex flex-col items-end hidden sm:flex"><span class="font-label-sm text-label-sm text-on-surface font-semibold">Super Admin</span><span class="font-body-sm text-body-sm text-on-surface-variant">Chief Safety Officer</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-20 pb-24 bg-surface"><div class="flex flex-col w-full px-margin space-y-space-lg">
+<!-- Dynamic Operational Broadcast Banner -->
+<div class="w-full bg-secondary text-on-secondary rounded-xl p-space-md shadow-md flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">cell_tower</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary-fixed">Telemetry Link v4.8</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed animate-ping"></span>
+</div>
+<p class="font-body-sm text-body-sm text-on-secondary/90 truncate">LiDAR mesh + 84 Wi-Fi 6E APs sync in 4s</p>
+</div>
+</div>
+<button class="px-2.5 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-sm text-label-sm font-semibold shrink-0 shadow-sm active:scale-95 transition-transform flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[14px]">refresh</span>
+<span>Sync</span>
+</button>
+</div>
+<!-- Total Campus Headcount Summary Hero Card -->
+<section class="w-full bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">domain</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">Campus-Wide Presence</span>
+</div>
+<div class="flex items-baseline gap-space-xs mt-1">
+<span class="font-headline-xl-mobile text-headline-xl-mobile font-bold text-on-surface tracking-tight" id="totalHeadcountVal">3,842</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">/ 5,650 Max</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Students, Faculty &amp; Verified Visitors</p>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[12px] text-secondary">trending_up</span>
+          +128 (15m)
+        </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">68.0% Campus Load</span>
+</div>
+</div>
+<!-- Capacity Bar Segmented Gauge -->
+<div class="flex flex-col gap-1.5 pt-1">
+<div class="w-full h-3.5 bg-surface-container rounded-full overflow-hidden p-0.5 flex">
+<div class="h-full bg-secondary rounded-full transition-all duration-700" style="width: 68%;"></div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>0</span>
+<span>2,825 Nominal (50%)</span>
+<span class="text-error font-semibold">5,650 Cap</span>
+</div>
+</div>
+<!-- Mini Telemetry Strip -->
+<div class="grid grid-cols-3 gap-space-xs pt-space-xs">
+<div class="bg-surface-container-low rounded-lg p-2 flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Wi-Fi Links</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">3,914 Dev</span>
+</div>
+<div class="bg-surface-container-low rounded-lg p-2 flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Turnstiles / Hr</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">1,420 Tap</span>
+</div>
+<div class="bg-surface-container-low rounded-lg p-2 flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">vs Yesterday</span>
+<span class="font-label-md text-label-md font-semibold text-secondary">+14.2% Peak</span>
+</div>
+</div>
+</section>
+<!-- Anomaly & Overcrowding Detection Alert Card -->
+<section class="w-full bg-error-container text-on-error-container rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-error text-on-error flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">hevc</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1">
+<span class="font-headline-sm text-headline-sm text-on-error-container font-semibold truncate">Anomaly: Foyer Chokepoint</span>
+<span class="font-label-sm text-label-sm bg-error text-on-error px-1.5 py-0.5 rounded font-mono">14:15:08</span>
+</div>
+<p class="font-body-sm text-body-sm mt-1 leading-snug">
+          Threshold alert triggered in Turing Hall foyer. Over-density delta (+42 arrivals/min) exceeded acoustic envelope.
+        </p>
+</div>
+</div>
+<div class="bg-surface-container-lowest/80 backdrop-blur-sm rounded-lg p-space-sm flex items-center justify-between gap-space-xs text-on-surface">
+<div class="flex items-center gap-1.5 min-w-0">
+<span class="material-symbols-outlined text-secondary text-[16px]">hvac</span>
+<span class="font-body-sm text-body-sm truncate font-medium">Ventilation Stage 3 auto-boosted • Usher 04 pinged</span>
+</div>
+<span class="font-label-sm text-label-sm font-semibold text-secondary shrink-0">Active</span>
+</div>
+</section>
+<!-- Search and Filter Bar -->
+<section class="flex flex-col gap-space-xs">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full h-11 pl-10 pr-10 bg-surface-container-lowest rounded-xl font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant shadow-sm focus:outline-none focus:bg-surface-container-low transition-colors" placeholder="Search zone, lab, building, or sensor ID..." type="text"/>
+<button class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-lg bg-surface-container text-on-surface-variant flex items-center justify-center" type="button">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+</button>
+</div>
+<!-- Quick Pill Filters -->
+<div class="flex items-center gap-space-xs overflow-x-auto py-1 no-scrollbar">
+<button class="px-3 py-1 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm font-semibold whitespace-nowrap shadow-sm" type="button">
+        All Zones (12)
+      </button>
+<button class="px-3 py-1 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-medium whitespace-nowrap active:scale-95 transition-transform" type="button">
+        High Density (&gt;85%)
+      </button>
+<button class="px-3 py-1 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-medium whitespace-nowrap active:scale-95 transition-transform" type="button">
+        Academic &amp; Labs
+      </button>
+<button class="px-3 py-1 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-medium whitespace-nowrap active:scale-95 transition-transform" type="button">
+        Recreation &amp; Dining
+      </button>
+</div>
+</section>
+<!-- Section Header -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[18px]">grid_view</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Granular Zone Densities</h2>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">5 Monitored Sectors</span>
+</div>
+<!-- Granular Zone Breakdown Cards -->
+<div class="flex flex-col space-y-space-md">
+<!-- Zone 1: Turing Lecture Hall & Auditorium (High Occupancy Warning) -->
+<article class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[12px]">warning</span>
+              HIGH OCCUPANCY (94.6%)
+            </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">ZN-A101</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold mt-1 truncate">Turing Lecture Hall &amp; Auditorium</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">CS 401 Midterm Session • Wing A, Floor 1</p>
+</div>
+<div class="text-right shrink-0">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface block">284 <span class="font-body-sm text-body-sm text-on-surface-variant font-normal">/ 300</span></span>
+<span class="font-label-sm text-label-sm text-error font-medium">16 seats free</span>
+</div>
+</div>
+<!-- Capacity Gauge -->
+<div class="flex flex-col gap-1">
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-error rounded-full" style="width: 94.6%;"></div>
+</div>
+<div class="flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Target Cap: 80%</span>
+<span class="text-error font-semibold">+38 arriving/10m</span>
+</div>
+</div>
+<!-- Sensor Breakdown Strip -->
+<div class="bg-surface-container-low rounded-lg p-2.5 flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<div class="flex items-center gap-1 text-on-surface">
+<span class="material-symbols-outlined text-[15px] text-secondary">wifi_tethering</span>
+<span>Wi-Fi AP Clients: <strong class="text-on-surface">291 devices</strong></span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-on-surface-variant">door_front</span>
+<span>Turnstile Delta: +14</span>
+</div>
+</div>
+</article>
+<!-- Zone 2: East Library (All Floors Breakdown) -->
+<article class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+              Moderate (72.0%)
+            </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">ZN-LIB-E</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold mt-1 truncate">East Library (All Floors)</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Quiet Study &amp; Collaborative Pods</p>
+</div>
+<div class="text-right shrink-0">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface block">612 <span class="font-body-sm text-body-sm text-on-surface-variant font-normal">/ 850</span></span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">+18 last 15m</span>
+</div>
+</div>
+<!-- Capacity Gauge -->
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 72%;"></div>
+</div>
+<!-- Multi-Floor Sub-Headcounts -->
+<div class="grid grid-cols-3 gap-space-xs pt-0.5">
+<div class="bg-surface-container-low rounded-lg p-2 text-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Floor 1</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">182</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Desk hub</span>
+</div>
+<div class="bg-surface-container-low rounded-lg p-2 text-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Floor 2</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">240</span>
+<span class="font-label-sm text-label-sm text-error block">88% full</span>
+</div>
+<div class="bg-surface-container-low rounded-lg p-2 text-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Floor 3</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">190</span>
+<span class="font-label-sm text-label-sm text-secondary block">Quiet zone</span>
+</div>
+</div>
+</article>
+<!-- Zone 3: Student Recreation Center & Gym -->
+<article class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+              Elevated (87.7%)
+            </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">ZN-REC</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold mt-1 truncate">Student Recreation Center &amp; Gym</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Building South • Peak Afternoon Flow</p>
+</div>
+<div class="text-right shrink-0">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface block">158 <span class="font-body-sm text-body-sm text-on-surface-variant font-normal">/ 180</span></span>
+<span class="font-label-sm text-label-sm text-error font-medium">22 slots left</span>
+</div>
+</div>
+<!-- Capacity Gauge -->
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary-container rounded-full" style="width: 87.7%;"></div>
+</div>
+<!-- Activity Station Breakdown -->
+<div class="grid grid-cols-3 gap-space-xs pt-0.5">
+<div class="bg-surface-container-low rounded-lg p-2 flex flex-col items-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Cardio Deck</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">48</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">/ 50 Mach</span>
+</div>
+<div class="bg-surface-container-low rounded-lg p-2 flex flex-col items-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Free Weights</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">65</span>
+<span class="font-label-sm text-label-sm text-error font-medium">Near limit</span>
+</div>
+<div class="bg-surface-container-low rounded-lg p-2 flex flex-col items-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Courts (1-3)</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">45</span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Scrimmage</span>
+</div>
+</div>
+</article>
+<!-- Zone 4: Sci & Engineering Building 4 (Restricted Clearance Lab) -->
+<article class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+              Nominal (70.1%)
+            </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">SEB-4</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold mt-1 truncate">Sci &amp; Engineering Building 4</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Nanofabrication &amp; Applied Robotics</p>
+</div>
+<div class="text-right shrink-0">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface block">421 <span class="font-body-sm text-body-sm text-on-surface-variant font-normal">/ 600</span></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Stable (±2)</span>
+</div>
+</div>
+<!-- Capacity Gauge -->
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 70.1%;"></div>
+</div>
+<!-- Secure Room Tagging -->
+<div class="bg-surface-container-low rounded-lg p-2.5 flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">verified_user</span>
+<span>Lab 402 Cleanroom: <strong class="text-on-surface">24 students</strong></span>
+</div>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface font-mono font-semibold">
+          Tier 4 Cleared
+        </span>
+</div>
+</article>
+<!-- Zone 5: Central Dining Commons -->
+<article class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+              Flow Easing (56.7%)
+            </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">ZN-DINING</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold mt-1 truncate">Central Dining Commons</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Main Hall • Post-Lunch Deceleration</p>
+</div>
+<div class="text-right shrink-0">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface block">510 <span class="font-body-sm text-body-sm text-on-surface-variant font-normal">/ 900</span></span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">-74 last 20m</span>
+</div>
+</div>
+<!-- Capacity Gauge -->
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 56.7%;"></div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm pt-0.5">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-secondary">av_timer</span>
+          Estimated Wait: <strong>&lt; 3 mins</strong>
+</span>
+<span class="font-mono">390 seats available</span>
+</div>
+</article>
+</div>
+<!-- Historical Telemetry & Trend Analysis Visual Preview -->
+<section class="w-full bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">24-Hour Diurnal Waveform</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Live vs. 7-Day Baseline Occupancy Curve</p>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-1 rounded bg-secondary-fixed text-on-secondary-fixed font-semibold">
+        +14% vs Yest
+      </span>
+</div>
+<!-- Micro SVG Sparkline Chart -->
+<div class="w-full h-28 bg-surface-container-low rounded-lg p-2 relative flex flex-col justify-end overflow-hidden">
+<svg class="w-full h-20 overflow-visible" fill="none" preserveaspectratio="none" viewbox="0 0 320 80">
+<!-- Baseline dashed curve -->
+<path d="M 0 68 Q 40 65 80 50 T 160 22 T 240 28 T 320 62" fill="none" opacity="0.6" stroke="#76777d" stroke-dasharray="3 3" stroke-width="1.5"></path>
+<!-- Active live curve -->
+<path d="M 0 72 Q 40 62 80 44 T 160 14 T 240 18 T 320 54" fill="none" stroke="#4b41e1" stroke-width="2.5"></path>
+<!-- Current position ping circle -->
+<circle class="animate-pulse" cx="240" cy="18" fill="#4b41e1" r="4.5"></circle>
+</svg>
+<div class="flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant pt-2">
+<span>06:00</span>
+<span>10:00</span>
+<span class="text-secondary font-semibold">NOW (14:20)</span>
+<span>18:00</span>
+<span>22:00</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>Actual Count</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-0.5 bg-outline"></span>
+<span>7-Day Moving Avg</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface">
+<span class="material-symbols-outlined text-[14px] text-secondary">schedule</span>
+<span>Peak Est: 15:30 (4,100)</span>
+</div>
+</div>
+</section>
+<!-- Export & Action Footer Trigger -->
+<div class="w-full pt-1 pb-4 flex items-center gap-space-sm">
+<button class="flex-1 h-11 bg-primary text-on-primary rounded-lg font-headline-sm text-headline-sm flex items-center justify-center gap-2 active:scale-98 transition-transform shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">ios_share</span>
+<span>Export Incident Telemetry (CSV)</span>
+</button>
+<button class="w-11 h-11 bg-surface-container-lowest text-on-surface rounded-lg flex items-center justify-center shrink-0 active:scale-95 transition-transform shadow-sm" type="button">
+<span class="material-symbols-outlined text-[20px]">print</span>
+</button>
+</div>
+</div>
+<script>
+  // Simple micro-interaction for live sync simulation
+  (function() {
+    const syncBtn = document.querySelector('button span.material-symbols-outlined:first-child')?.parentElement;
+    const headcountVal = document.getElementById('totalHeadcountVal');
+    
+    if (syncBtn && headcountVal) {
+      syncBtn.addEventListener('click', function() {
+        const icon = this.querySelector('.material-symbols-outlined');
+        if (icon) icon.classList.add('animate-spin');
+        
+        setTimeout(() => {
+          if (icon) icon.classList.remove('animate-spin');
+          const current = 3842;
+          const delta = Math.floor(Math.random() * 5) - 2;
+          headcountVal.textContent = (current + delta).toLocaleString();
+        }, 600);
+      });
+    }
+  })();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/85 backdrop-blur-xl shadow-[0_-1px_8px_rgba(0,0,0,0.04)]" data-active-classes="text-secondary"><div class="flex items-center justify-around h-16 px-space-xs"><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-2 text-on-surface-variant hover:text-on-surface transition-colors" data-path="live-feeds" href="#"><span class="material-symbols-outlined text-[22px]">videocam</span><span class="font-label-sm text-label-sm mt-0.5">Live Feeds</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-2 transition-colors text-secondary" data-path="headcount-and-zones" href="#"><span class="material-symbols-outlined text-[22px]">groups</span><span class="font-label-sm text-label-sm mt-0.5">Headcount</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-2 text-on-surface-variant hover:text-on-surface transition-colors" data-path="access-controls" href="#"><span class="material-symbols-outlined text-[22px]">lock_open</span><span class="font-label-sm text-label-sm mt-0.5">Access</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-2 text-on-surface-variant hover:text-on-surface transition-colors relative" data-path="alerts-and-incidents" href="#"><span class="relative"><span class="material-symbols-outlined text-[22px]">warning</span><span class="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-error ring-2 ring-surface"></span></span><span class="font-label-sm text-label-sm mt-0.5">Alerts</span></a></div></nav></body></html>
