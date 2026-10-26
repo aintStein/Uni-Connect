@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StudentProfile, NearbyBeacon, AccessTrace, Language } from '../../types';
+import { StudentProfile, NearbyBeacon, AccessTrace, Language, ThemeMode } from '../../types';
 import { TRANSLATIONS } from '../../data/mockCampusData';
 
 interface KeycardAccessViewProps {
@@ -9,6 +9,9 @@ interface KeycardAccessViewProps {
   currentDistance: number;
   onOpenSos: () => void;
   language: Language;
+  themeMode?: ThemeMode;
+  onToggleTheme?: () => void;
+  highContrast?: boolean;
 }
 
 export const KeycardAccessView: React.FC<KeycardAccessViewProps> = ({
@@ -18,15 +21,18 @@ export const KeycardAccessView: React.FC<KeycardAccessViewProps> = ({
   currentDistance,
   onOpenSos,
   language,
+  themeMode,
+  onToggleTheme,
+  highContrast,
 }) => {
-  const [cardTheme, setCardTheme] = useState<'obsidian' | 'light'>('obsidian');
+  const [localCardTheme, setLocalCardTheme] = useState<'obsidian' | 'light'>('obsidian');
   const [showQrModal, setShowQrModal] = useState(false);
   const [clockSec, setClockSec] = useState('10:27:48.6');
   const [autoSync, setAutoSync] = useState(true);
   const [qrToken, setQrToken] = useState('UWB-8841-SEC-9921');
   const t = TRANSLATIONS[language];
 
-  // High precision terminal clock for fraud prevention (updates ms)
+  // High precision terminal clock (ms counter)
   useEffect(() => {
     const timer = setInterval(() => {
       const now = new Date();
@@ -50,7 +56,16 @@ export const KeycardAccessView: React.FC<KeycardAccessViewProps> = ({
 
   const nearestBeacon = beacons[0] || { name: 'Lab 402', distanceMeters: currentDistance };
 
-  const isDark = cardTheme === 'obsidian';
+  // Sync isDark with global themeMode if provided, else fallback to local toggle
+  const isDark = themeMode ? themeMode === 'dark' : localCardTheme === 'obsidian';
+
+  const toggleTheme = () => {
+    if (onToggleTheme) {
+      onToggleTheme();
+    } else {
+      setLocalCardTheme(isDark ? 'light' : 'obsidian');
+    }
+  };
 
   return (
     <div className="flex flex-col w-full gap-3 pb-6">
@@ -73,7 +88,7 @@ export const KeycardAccessView: React.FC<KeycardAccessViewProps> = ({
           <div className="min-w-0">
             <div className="flex items-center gap-1.5">
               <span className="text-xs font-bold tracking-tight">
-                {language === 'zh' ? '实时遥测信号 • 在线' : 'Telemetry Stream'}
+                {t.telemetryLive}
               </span>
               <span
                 className={`px-1.5 py-0.2 rounded text-[9px] font-mono font-bold uppercase ${
@@ -90,7 +105,7 @@ export const KeycardAccessView: React.FC<KeycardAccessViewProps> = ({
                 isDark ? 'text-slate-400' : 'text-on-surface-variant'
               }`}
             >
-              Wi-Fi 6E &amp; Campus 5G Ultra • -48 dBm
+              5G Ultra • UWB 7.9 GHz • -48 dBm
             </p>
           </div>
         </div>
@@ -103,24 +118,24 @@ export const KeycardAccessView: React.FC<KeycardAccessViewProps> = ({
                 ? 'bg-slate-800/90 text-slate-300 hover:bg-slate-700'
                 : 'bg-surface-container-high text-on-surface'
             }`}
-            title="Toggle automated sensor synchronization"
+            title="Toggle Auto-Sync"
           >
             <span
               className={`w-1.5 h-1.5 rounded-full ${
                 autoSync ? 'bg-emerald-400 animate-pulse' : 'bg-slate-500'
               }`}
             />
-            <span>{language === 'zh' ? '自动同步' : 'Auto-Sync'}</span>
+            <span>{autoSync ? 'Synced' : 'Paused'}</span>
           </button>
 
           <button
-            onClick={() => setCardTheme(isDark ? 'light' : 'obsidian')}
+            onClick={toggleTheme}
             className={`w-7 h-7 rounded-full flex items-center justify-center text-xs transition-colors cursor-pointer ${
               isDark
                 ? 'bg-slate-800 text-cyan-300 hover:bg-slate-700'
                 : 'bg-surface-container text-on-surface-variant hover:text-on-surface'
             }`}
-            title={isDark ? 'Switch to Daylight Theme' : 'Switch to Obsidian Theme'}
+            title={isDark ? 'Switch to Light Card' : 'Switch to Dark Card'}
           >
             <span className="material-symbols-outlined text-[15px]">
               {isDark ? 'light_mode' : 'dark_mode'}
@@ -129,7 +144,7 @@ export const KeycardAccessView: React.FC<KeycardAccessViewProps> = ({
         </div>
       </div>
 
-      {/* Holographic Obsidian / Smart Keycard */}
+      {/* Holographic Keycard (Obsidian Dark or Daylight Light) */}
       <div
         className={`relative w-full rounded-3xl p-4.5 shadow-xl overflow-hidden transition-all duration-300 border ${
           isDark
@@ -162,15 +177,15 @@ export const KeycardAccessView: React.FC<KeycardAccessViewProps> = ({
                   isDark ? 'text-cyan-400' : 'text-indigo-600'
                 }`}
               >
-                {language === 'zh' ? '智能学生门禁卡 • SMART KEYCARD' : 'OBSIDIAN KEYCARD'}
+                {language === 'zh' ? '智能学生门禁卡' : 'SMART KEYCARD'}
               </span>
               <h2 className="text-base font-bold tracking-tight leading-tight">
-                {language === 'zh' ? '都市联合大学 Metro University' : 'Metro University'}
+                {language === 'zh' ? '都市联合大学' : 'Metro University'}
               </h2>
             </div>
           </div>
 
-          {/* NFC Primed status with Live running clock */}
+          {/* NFC Status & Live Clock */}
           <div className="text-right flex flex-col items-end">
             <span
               className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] font-mono font-semibold ${
@@ -180,14 +195,14 @@ export const KeycardAccessView: React.FC<KeycardAccessViewProps> = ({
               }`}
             >
               <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-              {language === 'zh' ? 'NFC 已就绪' : 'NFC Primed'}
+              NFC Ready
             </span>
             <span
               className={`text-[9px] font-mono mt-0.5 ${
                 isDark ? 'text-slate-400' : 'text-slate-500'
               }`}
             >
-              {clockSec} SEC
+              {clockSec}
             </span>
           </div>
         </div>
@@ -207,14 +222,14 @@ export const KeycardAccessView: React.FC<KeycardAccessViewProps> = ({
 
           <div className="min-w-0 flex-1">
             <h3 className="text-base font-bold truncate leading-tight">
-              {language === 'zh' ? `${profile.name} (亚历克斯·摩根)` : profile.name}
+              {profile.name}
             </h3>
             <p
               className={`text-xs truncate mt-0.5 ${
                 isDark ? 'text-slate-300' : 'text-slate-600'
               }`}
             >
-              {language === 'zh' ? '计算机与控制工程学院' : profile.school}
+              {profile.school}
             </p>
             <div className="flex items-center gap-2 mt-1.5 flex-wrap">
               <span
@@ -224,14 +239,14 @@ export const KeycardAccessView: React.FC<KeycardAccessViewProps> = ({
                     : 'bg-indigo-100 text-indigo-700'
                 }`}
               >
-                {language === 'zh' ? `学号: ${profile.id}` : profile.id}
+                {profile.id}
               </span>
               <span
                 className={`text-[10px] font-mono ${
                   isDark ? 'text-cyan-400 font-medium' : 'text-slate-700 font-semibold'
                 }`}
               >
-                {language === 'zh' ? '4级通行权限' : profile.tier}
+                Tier 4 Pass
               </span>
             </div>
           </div>
@@ -243,19 +258,18 @@ export const KeycardAccessView: React.FC<KeycardAccessViewProps> = ({
             isDark ? 'border-slate-800/80' : 'border-indigo-100'
           }`}
         >
-          <div className="flex items-center gap-2">
-            <div className="flex items-end gap-0.5 h-3.5 text-cyan-400">
-              <span className="w-0.5 h-2.5 bg-cyan-400 animate-pulse" />
-              <span className="w-0.5 h-3.5 bg-cyan-400 animate-pulse delay-75" />
-              <span className="w-0.5 h-2 bg-cyan-400 animate-pulse delay-150" />
-              <span className="w-0.5 h-3 bg-cyan-400 animate-pulse delay-100" />
+          <div className="flex items-center gap-1.5">
+            <div className="flex items-end gap-0.5 h-3 text-cyan-400">
+              <span className="w-0.5 h-2 bg-cyan-400 animate-pulse" />
+              <span className="w-0.5 h-3 bg-cyan-400 animate-pulse delay-75" />
+              <span className="w-0.5 h-1.5 bg-cyan-400 animate-pulse delay-150" />
             </div>
             <span
               className={`text-[10px] font-mono ${
                 isDark ? 'text-slate-300' : 'text-slate-600'
               }`}
             >
-              {language === 'zh' ? 'UWB 超宽带自动广播' : 'UWB Auto-Broadcast'}
+              UWB Broadcast
             </span>
           </div>
 
@@ -268,29 +282,28 @@ export const KeycardAccessView: React.FC<KeycardAccessViewProps> = ({
             }`}
           >
             <span className="material-symbols-outlined text-[15px]">qr_code_2</span>
-            <span>{language === 'zh' ? '出示通行码' : 'Show Pass'}</span>
+            <span>{t.showPass}</span>
           </button>
         </div>
       </div>
 
-      {/* QR Code / Digital Barcode Modal */}
+      {/* QR Code / Digital Pass Modal */}
       {showQrModal && (
         <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-slate-900 rounded-3xl p-5 max-w-xs w-full shadow-2xl text-center space-y-4 border border-slate-200 dark:border-slate-800">
+          <div className="bg-surface-container-lowest rounded-3xl p-5 max-w-xs w-full shadow-2xl text-center space-y-3.5 border border-outline-variant/30">
             <div className="flex justify-between items-center">
-              <span className="font-bold text-xs text-slate-900 dark:text-white uppercase tracking-wider">
-                Cryptographic Access Pass
+              <span className="font-bold text-xs text-on-surface uppercase tracking-wider">
+                Cryptographic Pass
               </span>
               <button
                 onClick={() => setShowQrModal(false)}
-                className="w-7 h-7 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 flex items-center justify-center cursor-pointer"
+                className="w-7 h-7 rounded-full bg-surface-container text-on-surface-variant hover:text-on-surface flex items-center justify-center cursor-pointer"
               >
                 <span className="material-symbols-outlined text-sm">close</span>
               </button>
             </div>
 
-            {/* Simulated 2D Matrix / QR Code */}
-            <div className="p-3 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col items-center justify-center">
+            <div className="p-3 bg-surface-container-low rounded-2xl border border-outline-variant/30 flex flex-col items-center justify-center">
               <div className="w-40 h-40 bg-white p-2 rounded-xl shadow-inner flex flex-col items-center justify-center">
                 <svg className="w-full h-full text-slate-900" viewBox="0 0 100 100">
                   <rect x="5" y="5" width="25" height="25" fill="none" stroke="currentColor" strokeWidth="6" />
@@ -311,18 +324,18 @@ export const KeycardAccessView: React.FC<KeycardAccessViewProps> = ({
               <span className="font-mono text-xs font-semibold text-secondary mt-2">
                 {qrToken}
               </span>
-              <span className="text-[10px] text-slate-500 font-mono">
-                Auto-rotates every 30s • Hardware Signed
+              <span className="text-[10px] text-on-surface-variant font-mono">
+                Auto-rotates every 30s
               </span>
             </div>
 
-            <p className="text-[11px] text-slate-600 dark:text-slate-400">
-              Hold within 5cm of optical reader or NFC turnstile antenna.
+            <p className="text-[11px] text-on-surface-variant">
+              Hold within 5cm of turnstile optical reader.
             </p>
 
             <button
               onClick={() => setShowQrModal(false)}
-              className="w-full py-2.5 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-xs font-bold cursor-pointer"
+              className="w-full py-2.5 rounded-xl bg-secondary text-white text-xs font-bold cursor-pointer"
             >
               Done
             </button>
@@ -342,39 +355,73 @@ export const KeycardAccessView: React.FC<KeycardAccessViewProps> = ({
           <div className="flex items-center gap-2">
             <div
               className={`w-6 h-6 rounded-lg flex items-center justify-center ${
-                isDark ? 'bg-blue-900/60 text-cyan-400' : 'bg-secondary-fixed text-secondary'
+                isDark ? 'bg-blue-950 text-cyan-400' : 'bg-secondary-fixed text-secondary'
               }`}
             >
               <span className="material-symbols-outlined text-[16px]">radar</span>
             </div>
             <h3 className="font-bold text-sm">
-              {language === 'zh' ? '近场感应雷达 Proximity Radar' : t.proximityRadar}
+              {t.proximityRadar}
             </h3>
           </div>
-          <span
-            className={`text-[10px] font-mono px-2 py-0.5 rounded-full ${
-              isDark
-                ? 'text-cyan-400 bg-cyan-950/80 border border-cyan-800/50'
-                : 'text-secondary bg-surface-container-high'
-            }`}
-          >
-            {language === 'zh' ? '自动识别范围: <3.0米' : '• Auto-Range: <3.0m'}
-          </span>
+          <div className="flex items-center gap-1.5">
+            {highContrast && (
+              <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-indigo-600 text-white animate-pulse">
+                SUNLIGHT RADAR
+              </span>
+            )}
+            <span
+              className={`text-[10px] font-mono px-2 py-0.5 rounded-full ${
+                highContrast
+                  ? 'bg-black text-white dark:bg-white dark:text-black font-bold'
+                  : isDark
+                  ? 'text-cyan-400 bg-cyan-950/80 border border-cyan-800/50'
+                  : 'text-secondary bg-surface-container-high'
+              }`}
+            >
+              &lt; 3.0m Range
+            </span>
+          </div>
         </div>
 
         {/* Circular Radar HUD Simulation */}
         <div
-          className={`relative w-full h-46 rounded-2xl overflow-hidden flex items-center justify-center border ${
-            isDark
+          className={`relative w-full h-44 rounded-2xl overflow-hidden flex items-center justify-center border ${
+            highContrast
+              ? 'border-2 border-indigo-600 dark:border-cyan-400 bg-black'
+              : isDark
               ? 'bg-[#090f1d] border-slate-800/90'
               : 'bg-surface-container-low border-slate-200'
           }`}
         >
           {/* Concentric distance rings */}
-          <div className={`absolute w-44 h-44 rounded-full border ${isDark ? 'border-blue-500/15' : 'border-secondary/20'}`} />
-          <div className={`absolute w-32 h-32 rounded-full border ${isDark ? 'border-blue-500/25' : 'border-secondary/30'}`} />
-          <div className={`absolute w-20 h-20 rounded-full border ${isDark ? 'border-blue-500/35' : 'border-secondary/40'}`} />
-          <div className={`absolute w-8 h-8 rounded-full border ${isDark ? 'border-blue-500/45' : 'border-secondary/50'}`} />
+          <div
+            className={`radar-hud-ring absolute w-40 h-40 rounded-full border ${
+              highContrast
+                ? 'border-2 border-indigo-500 dark:border-cyan-400 opacity-100'
+                : isDark
+                ? 'border-blue-500/15'
+                : 'border-secondary/20'
+            }`}
+          />
+          <div
+            className={`radar-hud-ring absolute w-28 h-28 rounded-full border ${
+              highContrast
+                ? 'border-2 border-indigo-500 dark:border-cyan-400 opacity-100'
+                : isDark
+                ? 'border-blue-500/25'
+                : 'border-secondary/30'
+            }`}
+          />
+          <div
+            className={`radar-hud-ring absolute w-16 h-16 rounded-full border ${
+              highContrast
+                ? 'border-2 border-indigo-500 dark:border-cyan-400 opacity-100'
+                : isDark
+                ? 'border-blue-500/35'
+                : 'border-secondary/40'
+            }`}
+          />
 
           {/* Center Student Node */}
           <div className="relative z-10 w-4 h-4 rounded-full bg-cyan-400 shadow-[0_0_12px_#38bdf8] flex items-center justify-center">
@@ -396,8 +443,8 @@ export const KeycardAccessView: React.FC<KeycardAccessViewProps> = ({
                 : 'bg-surface-container-lowest/90 text-on-surface border border-secondary/30'
             }`}
             style={{
-              top: `${Math.min(75, Math.max(22, 50 - currentDistance * 3))}%`,
-              right: `${Math.min(75, Math.max(15, 20 + currentDistance * 3))}%`,
+              top: `${Math.min(72, Math.max(22, 50 - currentDistance * 3))}%`,
+              right: `${Math.min(72, Math.max(15, 20 + currentDistance * 3))}%`,
             }}
           >
             <span
@@ -406,30 +453,24 @@ export const KeycardAccessView: React.FC<KeycardAccessViewProps> = ({
               }`}
             />
             <span className="text-[11px] font-mono font-bold">
-              {language === 'zh'
-                ? `402号实验室 (${currentDistance.toFixed(1)}米)`
-                : `${nearestBeacon.name} (${currentDistance.toFixed(1)}m)`}
+              {nearestBeacon.name} ({currentDistance.toFixed(1)}m)
             </span>
           </div>
 
           {/* Secondary Target: Turnstile B */}
           <div
-            className={`absolute bottom-4 left-4 z-10 flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] font-mono ${
+            className={`absolute bottom-3 left-3 z-10 flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] font-mono ${
               isDark
                 ? 'bg-[#142038]/90 text-slate-300 border border-slate-700/50'
                 : 'bg-surface-container/80 text-on-surface-variant'
             }`}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-indigo-400" />
-            <span>{language === 'zh' ? 'B区闸机通道 (4.5米)' : 'Turnstile B (4.5m)'}</span>
+            <span>Turnstile B (4.5m)</span>
           </div>
 
-          {/* Footnote telemetry */}
-          <div className="absolute bottom-2 left-4 text-[9px] font-mono text-emerald-400">
-            • {language === 'zh' ? '已进入感应区域' : 'Within Entry Field'}
-          </div>
-          <div className="absolute bottom-2 right-4 text-[9px] font-mono text-slate-400">
-            {language === 'zh' ? '超宽带 7.9 GHz 频段' : 'Ultra-Wideband 7.9 GHz'}
+          <div className="absolute bottom-2 right-3 text-[9px] font-mono text-slate-400">
+            UWB 7.9 GHz
           </div>
         </div>
 
@@ -449,12 +490,8 @@ export const KeycardAccessView: React.FC<KeycardAccessViewProps> = ({
             </span>
             <span className="text-[11px] font-medium truncate">
               {currentDistance <= 1.5
-                ? language === 'zh'
-                  ? '无感近场通行已解锁: 402号实验室'
-                  : `Hands-free proximity pass unlocked for ${nearestBeacon.name}`
-                : language === 'zh'
-                ? '接近至1.5米内自动无感解锁开门'
-                : 'Approach within 1.5m for automated hands-free unlock'}
+                ? `Auto-unlocked for ${nearestBeacon.name}`
+                : 'Auto-unlocks within 1.5m'}
             </span>
           </div>
           <span
@@ -479,14 +516,12 @@ export const KeycardAccessView: React.FC<KeycardAccessViewProps> = ({
           <div className="flex items-center gap-2">
             <div
               className={`w-6 h-6 rounded-lg flex items-center justify-center ${
-                isDark ? 'bg-blue-900/60 text-cyan-400' : 'bg-secondary-fixed text-secondary'
+                isDark ? 'bg-blue-950 text-cyan-400' : 'bg-secondary-fixed text-secondary'
               }`}
             >
               <span className="material-symbols-outlined text-[16px]">history</span>
             </div>
-            <h3 className="font-bold text-sm">
-              {language === 'zh' ? '无感通行记录 Access' : 'Seamless Access Traces'}
-            </h3>
+            <h3 className="font-bold text-sm">{t.recentTraces}</h3>
           </div>
           <span
             className={`text-[10px] font-mono px-2 py-0.5 rounded-full ${
@@ -495,39 +530,13 @@ export const KeycardAccessView: React.FC<KeycardAccessViewProps> = ({
                 : 'text-secondary bg-surface-container-high'
             }`}
           >
-            {language === 'zh' ? '实时感应日志' : 'Live Sensor Log'}
+            Live Logs
           </span>
         </div>
 
-        {/* Background Auto-Pass Notice */}
-        <div
-          className={`p-2.5 rounded-xl text-xs flex items-center justify-between ${
-            isDark
-              ? 'bg-[#0d1424] text-slate-300 border border-slate-800'
-              : 'bg-surface-container-low text-on-surface-variant'
-          }`}
-        >
-          <div className="flex items-center gap-2">
-            <span className="material-symbols-outlined text-[16px] text-cyan-400">sensors</span>
-            <span className="text-[11px]">
-              {language === 'zh'
-                ? '后台无感通行中 • 靠近门禁时 UWB 雷达自动完成近场身份校验并开门'
-                : 'Background Auto-Pass Active • Portals unlock hands-free via UWB radar'}
-            </span>
-          </div>
-          <span className="material-symbols-outlined text-[15px] text-cyan-400 shrink-0">info</span>
-        </div>
-
         {/* Trace List */}
-        <div className="space-y-2 pt-1">
-          <div className="text-[9px] font-mono uppercase tracking-wider text-slate-400 px-1 flex justify-between">
-            <span>{language === 'zh' ? '今日通行' : "TODAY'S TRACES"}</span>
-            <span className="text-cyan-400">
-              {language === 'zh' ? '3 次记录' : `${traces.filter((t) => t.isToday).length} ENTRIES`}
-            </span>
-          </div>
-
-          {traces.map((trace) => (
+        <div className="space-y-1.5 pt-0.5">
+          {traces.slice(0, 3).map((trace) => (
             <div
               key={trace.id}
               className={`p-2.5 rounded-xl transition-colors flex items-start justify-between gap-2 ${
@@ -536,34 +545,25 @@ export const KeycardAccessView: React.FC<KeycardAccessViewProps> = ({
                   : 'bg-surface-container-low/70 hover:bg-surface-container'
               }`}
             >
-              <div className="flex items-start gap-2.5 min-w-0">
+              <div className="flex items-start gap-2 min-w-0">
                 <div
-                  className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 mt-0.5 ${
+                  className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 mt-0.5 ${
                     isDark ? 'bg-slate-800 text-cyan-400' : 'bg-surface-container text-secondary'
                   }`}
                 >
-                  <span className="material-symbols-outlined text-[16px]">
+                  <span className="material-symbols-outlined text-[15px]">
                     {trace.type === 'walk-through'
                       ? 'door_front'
                       : trace.type === 'instant-pass'
                       ? 'qr_code_scanner'
-                      : trace.type === 'auto-clearance'
-                      ? 'how_to_reg'
-                      : 'domain_verification'}
+                      : 'how_to_reg'}
                   </span>
                 </div>
                 <div className="min-w-0">
                   <span className="font-bold text-xs block truncate leading-tight">
                     {trace.location}
                   </span>
-                  <p
-                    className={`text-[10px] leading-tight mt-0.5 ${
-                      isDark ? 'text-slate-400' : 'text-on-surface-variant'
-                    }`}
-                  >
-                    {trace.subLocation}
-                  </p>
-                  <div className="flex items-center gap-2 mt-1.5">
+                  <div className="flex items-center gap-1.5 mt-1">
                     <span
                       className={`px-1.5 py-0.2 rounded text-[9px] font-mono font-semibold ${
                         isDark ? 'bg-cyan-950 text-cyan-300' : 'bg-surface-container text-secondary'
@@ -591,98 +591,53 @@ export const KeycardAccessView: React.FC<KeycardAccessViewProps> = ({
             </div>
           ))}
         </div>
+      </div>
 
+      {/* Hardware Status */}
+      <div className="grid grid-cols-2 gap-2.5">
         <div
-          className={`pt-1 flex items-center justify-between text-[9px] font-mono ${
-            isDark ? 'text-slate-500' : 'text-on-surface-variant'
+          className={`p-3 rounded-xl border ${
+            isDark ? 'bg-[#101728] border-slate-800 text-white' : 'bg-surface-container-lowest border-outline-variant/30 text-on-surface'
           }`}
         >
-          <span>{language === 'zh' ? '• 由后台高精度测距传感器安全记录' : '• Logged via Background Distance Sensor'}</span>
-          <span>{language === 'zh' ? '14天隐私自动清除保障' : 'Auto-Purged after 14 days'}</span>
+          <div className="flex items-center justify-between text-[11px]">
+            <span className={isDark ? 'text-slate-400' : 'text-on-surface-variant'}>BLE 5.3</span>
+            <span className="material-symbols-outlined text-cyan-400 text-xs">bluetooth</span>
+          </div>
+          <span className="text-sm font-bold block mt-1">Active</span>
+          <span className="text-[9px] font-mono text-slate-400">0.02%/hr drain</span>
+        </div>
+
+        <div
+          className={`p-3 rounded-xl border ${
+            isDark ? 'bg-[#101728] border-slate-800 text-white' : 'bg-surface-container-lowest border-outline-variant/30 text-on-surface'
+          }`}
+        >
+          <div className="flex items-center justify-between text-[11px]">
+            <span className={isDark ? 'text-slate-400' : 'text-on-surface-variant'}>Latency</span>
+            <span className="material-symbols-outlined text-emerald-400 text-xs">speed</span>
+          </div>
+          <span className="text-sm font-bold block mt-1">14 ms</span>
+          <span className="text-[9px] font-mono text-slate-400">Mesh Handshake</span>
         </div>
       </div>
 
-      {/* Access Hardware Status */}
-      <div
-        className={`w-full rounded-2xl p-4 shadow-xs border transition-colors space-y-3 ${
-          isDark
-            ? 'bg-[#101728] border-slate-800 text-white'
-            : 'bg-surface-container-lowest border-outline-variant/30 text-on-surface'
-        }`}
-      >
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="material-symbols-outlined text-cyan-400 text-[18px]">cell_tower</span>
-            <h3 className="font-bold text-sm">
-              {language === 'zh' ? '门禁硬件工作状态' : 'Access Hardware Status'}
-            </h3>
-          </div>
-          <span className="text-[10px] font-mono text-emerald-400 font-semibold">
-            • {language === 'zh' ? '网络极佳 • Optimal' : 'Mesh Optimal'}
-          </span>
-        </div>
-
-        <div className="grid grid-cols-2 gap-2.5">
-          <div
-            className={`p-3 rounded-xl border ${
-              isDark ? 'bg-[#0d1424] border-slate-800' : 'bg-surface-container-low border-slate-200'
-            }`}
-          >
-            <div className="flex items-center justify-between text-[11px]">
-              <span className={isDark ? 'text-slate-400' : 'text-on-surface-variant'}>
-                {language === 'zh' ? '蓝牙低功耗 5.3' : 'Beacon BLE 5.3'}
-              </span>
-              <span className="material-symbols-outlined text-cyan-400 text-xs">bluetooth</span>
-            </div>
-            <span className="text-sm font-bold block mt-1">
-              {language === 'zh' ? '运行中 (Active)' : 'Active'}
-            </span>
-            <span className="text-[9px] font-mono text-slate-400">
-              {language === 'zh' ? '0.02% 电量消耗/小时' : '0.02% batt/hr bypass'}
-            </span>
-          </div>
-
-          <div
-            className={`p-3 rounded-xl border ${
-              isDark ? 'bg-[#0d1424] border-slate-800' : 'bg-surface-container-low border-slate-200'
-            }`}
-          >
-            <div className="flex items-center justify-between text-[11px]">
-              <span className={isDark ? 'text-slate-400' : 'text-on-surface-variant'}>
-                {language === 'zh' ? '超低延迟' : 'Latency'}
-              </span>
-              <span className="material-symbols-outlined text-emerald-400 text-xs">speed</span>
-            </div>
-            <span className="text-sm font-bold block mt-1">
-              {language === 'zh' ? '14 毫秒' : '14 ms'}
-            </span>
-            <span className="text-[9px] font-mono text-slate-400">
-              {language === 'zh' ? '快速本地握手响应' : 'Fast Local Handshake'}
-            </span>
-          </div>
-        </div>
-      </div>
-
-      {/* Quick SOS Trigger Banner (Matching Image_11 & Image_13 bottom) */}
-      <div className="w-full bg-gradient-to-r from-rose-950/90 via-red-950/90 to-rose-950/90 text-white rounded-2xl p-3.5 flex items-center justify-between shadow-lg border border-red-800/50">
-        <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-red-600 text-white flex items-center justify-center font-bold text-xs shadow-md">
+      {/* Quick SOS Trigger Banner */}
+      <div className="w-full bg-gradient-to-r from-rose-950/90 via-red-950/90 to-rose-950/90 text-white rounded-2xl p-3 flex items-center justify-between shadow-lg border border-red-800/50">
+        <div className="flex items-center gap-2.5">
+          <div className="w-8 h-8 rounded-xl bg-red-600 text-white flex items-center justify-center font-bold text-xs shadow-md">
             SOS
           </div>
           <div>
-            <h4 className="font-bold text-xs text-white">
-              {language === 'zh' ? '校园安全紧急 SOS' : 'Campus Safety SOS'}
-            </h4>
-            <p className="text-[10px] text-red-200">
-              {language === 'zh' ? '长按发起求助 • 触发紧急警报' : 'Press & hold for emergency beacon'}
-            </p>
+            <h4 className="font-bold text-xs text-white">{t.safetyTab} SOS</h4>
+            <p className="text-[10px] text-red-200">{t.holdSos}</p>
           </div>
         </div>
         <button
           onClick={onOpenSos}
-          className="px-3.5 py-1.5 rounded-xl bg-red-600 text-white font-bold text-xs shadow-md hover:bg-red-500 active:scale-95 transition-all cursor-pointer"
+          className="px-3 py-1 rounded-xl bg-red-600 text-white font-bold text-xs shadow-md hover:bg-red-500 active:scale-95 transition-all cursor-pointer"
         >
-          {language === 'zh' ? '长按发起' : 'Trigger'}
+          Trigger
         </button>
       </div>
     </div>

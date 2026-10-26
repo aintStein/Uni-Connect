@@ -1,28 +1,88 @@
 @import "tailwindcss";
 
 @layer base {
+  :root {
+    --surface: #f8f9ff;
+    --on-surface: #0b1c30;
+    --surface-container-lowest: #ffffff;
+    --surface-container-low: #eff4ff;
+    --surface-container: #e5eeff;
+    --surface-container-high: #dce9ff;
+    --surface-container-highest: #d3e4fe;
+    --on-surface-variant: #45464d;
+    --surface-dim: #cbdbf5;
+    --surface-bright: #ffffff;
+    --outline: #76777d;
+    --outline-variant: #c6c6cd;
+    --card-border: rgba(226, 232, 240, 0.8);
+  }
+
+  html.dark, html.dark body {
+    --surface: #0a0f1d;
+    --on-surface: #f8fafc;
+    --surface-container-lowest: #111827;
+    --surface-container-low: #151f32;
+    --surface-container: #1c2842;
+    --surface-container-high: #243456;
+    --surface-container-highest: #2d416b;
+    --on-surface-variant: #94a3b8;
+    --surface-dim: #070b16;
+    --surface-bright: #141f36;
+    --outline: #475569;
+    --outline-variant: #334155;
+    --card-border: rgba(51, 65, 85, 0.6);
+    background-color: #0a0f1d;
+    color: #f8fafc;
+  }
+
   html, body {
     width: 100vw;
     margin: 0;
     padding: 0;
-    background-color: #f8f9ff;
-    color: #0b1c30;
+    background-color: var(--surface);
+    color: var(--on-surface);
   }
+
   body {
     overscroll-behavior: none;
     -webkit-tap-highlight-color: transparent;
   }
+
   .pb-safe {
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
+
   .pt-safe {
     padding-top: env(safe-area-inset-top, 0px);
   }
+
   main > :first-child {
     margin-top: 0 !important;
   }
+
   main > :last-child {
     margin-bottom: 0 !important;
+  }
+
+  /* High Contrast Sunlight Mode */
+  html.high-contrast {
+    filter: contrast(125%);
+  }
+
+  html.high-contrast body {
+    font-weight: 500;
+  }
+
+  html.high-contrast .radar-hud-ring {
+    border-width: 2.5px !important;
+    border-color: #4338ca !important;
+    opacity: 1 !important;
+  }
+
+  html.dark.high-contrast .radar-hud-ring {
+    border-width: 2.5px !important;
+    border-color: #06b6d4 !important;
+    opacity: 1 !important;
   }
 }
 

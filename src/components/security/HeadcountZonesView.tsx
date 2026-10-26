@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-import { ZoneOccupancy } from '../../types';
-import { ZONE_OCCUPANCIES } from '../../data/mockCampusData';
+import { ZoneOccupancy, Language } from '../../types';
+import { ZONE_OCCUPANCIES, TRANSLATIONS } from '../../data/mockCampusData';
 
-export const HeadcountZonesView: React.FC = () => {
+interface HeadcountZonesViewProps {
+  language?: Language;
+}
+
+export const HeadcountZonesView: React.FC<HeadcountZonesViewProps> = ({ language = 'en' }) => {
+  const t = TRANSLATIONS[language];
   const [zones, setZones] = useState<ZoneOccupancy[]>(ZONE_OCCUPANCIES);
   const [totalHeadcount, setTotalHeadcount] = useState(3842);
   const [searchQuery, setSearchQuery] = useState('');
@@ -65,7 +70,7 @@ export const HeadcountZonesView: React.FC = () => {
               <span className="w-1.5 h-1.5 rounded-full bg-secondary-fixed animate-ping" />
             </div>
             <p className="text-xs text-white/90 truncate mt-0.5">
-              LiDAR mesh + 84 Wi-Fi 6E APs sync in 4s
+              LiDAR mesh + 84 5G gNodeB Cells sync in 4s
             </p>
           </div>
         </div>
@@ -136,7 +141,7 @@ export const HeadcountZonesView: React.FC = () => {
         {/* Mini Telemetry Strip */}
         <div className="grid grid-cols-3 gap-2 pt-1">
           <div className="bg-surface-container-low rounded-2xl p-2.5 flex flex-col">
-            <span className="text-[10px] font-mono text-on-surface-variant">Wi-Fi Links</span>
+            <span className="text-[10px] font-mono text-on-surface-variant">5G NR Links</span>
             <span className="font-bold font-mono text-xs text-on-surface mt-0.5">3,914 Dev</span>
           </div>
           <div className="bg-surface-container-low rounded-2xl p-2.5 flex flex-col">
@@ -158,7 +163,7 @@ export const HeadcountZonesView: React.FC = () => {
           </div>
           <div className="flex-1 min-w-0">
             <div className="flex items-center justify-between gap-1">
-              <span className="font-bold text-xs truncate">Anomaly: Foyer Chokepoint</span>
+              <span className="font-bold text-xs truncate">{t.anomalyDetected}</span>
               <span className="text-[10px] font-mono bg-error text-white px-2 py-0.2 rounded font-bold">
                 14:15:08
               </span>
@@ -170,12 +175,16 @@ export const HeadcountZonesView: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-surface-container-lowest/80 dark:bg-slate-900/80 backdrop-blur-sm rounded-xl p-2.5 flex items-center justify-between gap-2 text-on-surface text-xs">
-          <div className="flex items-center gap-1.5 min-w-0">
-            <span className="material-symbols-outlined text-secondary text-[16px]">hvac</span>
-            <span className="truncate font-medium">Ventilation Stage 3 auto-boosted • Usher 04 pinged</span>
+        <div className="bg-white/95 dark:bg-slate-900/95 border border-slate-300 dark:border-slate-700 shadow-sm rounded-xl p-2.5 flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2 min-w-0">
+            <span className="material-symbols-outlined text-indigo-600 dark:text-cyan-400 text-[18px] shrink-0">hvac</span>
+            <span className="truncate font-semibold text-xs text-slate-900 dark:text-slate-100">
+              Ventilation Stage 3 auto-boosted • Usher 04 pinged
+            </span>
           </div>
-          <span className="text-[10px] font-mono font-bold text-secondary shrink-0">Active</span>
+          <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-md bg-indigo-100 text-indigo-800 dark:bg-indigo-950 dark:text-indigo-300 shrink-0">
+            Active
+          </span>
         </div>
       </div>
 
@@ -197,10 +206,10 @@ export const HeadcountZonesView: React.FC = () => {
         {/* Filter Pills */}
         <div className="flex items-center gap-2 overflow-x-auto py-1 no-scrollbar">
           {[
-            { id: 'all', label: 'All Zones (12)' },
-            { id: 'high', label: 'High Density (>85%)' },
-            { id: 'academic', label: 'Academic & Labs' },
-            { id: 'rec', label: 'Recreation & Dining' },
+            { id: 'all', label: language === 'zh' ? '全域监控 (12)' : language === 'ms' ? 'Semua Zon (12)' : language === 'id' ? 'Semua Zona (12)' : language === 'kk' ? 'Барлық аймақтар (12)' : 'All Zones (12)' },
+            { id: 'high', label: language === 'zh' ? '高密集 (>85%)' : language === 'ms' ? 'Kepadatan Tinggi (>85%)' : language === 'id' ? 'Kepadatan Tinggi (>85%)' : language === 'kk' ? 'Жоғары тығыздық (>85%)' : 'High Density (>85%)' },
+            { id: 'academic', label: language === 'zh' ? '教学与实验区' : language === 'ms' ? 'Akademik & Makmal' : language === 'id' ? 'Akademik & Lab' : language === 'kk' ? 'Оқу және зертханалар' : 'Academic & Labs' },
+            { id: 'rec', label: language === 'zh' ? '文体与生活区' : language === 'ms' ? 'Rekreasi & Kafeteria' : language === 'id' ? 'Rekreasi & Kantin' : language === 'kk' ? 'Спорт және асхана' : 'Recreation & Dining' },
           ].map((f) => (
             <button
               key={f.id}
@@ -376,7 +385,7 @@ export const HeadcountZonesView: React.FC = () => {
           className="flex-1 h-12 bg-primary text-white rounded-2xl font-semibold text-xs flex items-center justify-center gap-2 active:scale-98 transition-transform shadow-sm hover:bg-slate-900"
         >
           <span className="material-symbols-outlined text-[18px]">ios_share</span>
-          <span>Export Incident Telemetry (CSV)</span>
+          <span>{t.exportLog} (CSV)</span>
         </button>
 
         <button

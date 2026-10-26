@@ -52,6 +52,45 @@ export interface ScheduleClass {
   instructor: string;
   roomCapacity: number;
   roomEnrolled: number;
+  credits?: number;
+  topic?: string;
+}
+
+export interface CourseAssignment {
+  id: string;
+  courseCode: string;
+  courseName: string;
+  title: string;
+  description: string;
+  dueDate: string;
+  dueTime: string;
+  daysRemaining: number;
+  weightPercentage: number;
+  status: 'due-soon' | 'in-progress' | 'submitted' | 'graded';
+  submissionType: 'file-repo' | 'pdf-doc' | 'code-zip';
+  submittedDate?: string;
+  grade?: string;
+  score?: number;
+  maxScore?: number;
+  feedback?: string;
+  instructor: string;
+  attachedFile?: string;
+  repoUrl?: string;
+}
+
+export interface DaySchedule {
+  day: 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri';
+  dayFull: string;
+  classes: ScheduleClass[];
+}
+
+export interface CourseMaterial {
+  id: string;
+  courseCode: string;
+  title: string;
+  type: 'slides' | 'lab' | 'reading' | 'cheatsheet';
+  size: string;
+  week: number;
 }
 
 export interface CampusEvent {

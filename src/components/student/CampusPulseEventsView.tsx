@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Language } from '../../types';
+import { TRANSLATIONS } from '../../data/mockCampusData';
 
 interface CampusPulseEventsViewProps {
   language: Language;
@@ -7,12 +8,20 @@ interface CampusPulseEventsViewProps {
 }
 
 export const CampusPulseEventsView: React.FC<CampusPulseEventsViewProps> = ({
+  language,
   onOpenFacilities,
 }) => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [heroRsvp, setHeroRsvp] = useState(false);
   const [reservedCards, setReservedCards] = useState<{ [id: string]: boolean }>({});
   const [showPassModal, setShowPassModal] = useState(false);
+  const [toastMsg, setToastMsg] = useState<string | null>(null);
+  const t = TRANSLATIONS[language];
+
+  const showToast = (msg: string) => {
+    setToastMsg(msg);
+    setTimeout(() => setToastMsg(null), 2500);
+  };
 
   const toggleCardReserved = (id: string) => {
     setReservedCards((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -42,24 +51,23 @@ export const CampusPulseEventsView: React.FC<CampusPulseEventsViewProps> = ({
               </span>
             </div>
             <p className="font-headline-sm text-headline-sm text-on-primary leading-tight">
-              Campus Wi-Fi 6 Upgrade Tonight
+              Campus 5G NR Microcell Upgrade Tonight
             </p>
             <p className="font-body-sm text-body-sm text-inverse-primary/90 mt-1">
-              Offline Bluetooth mesh door access remains 100% functional. Academic keycards and badges
-              will authenticate seamlessly without latency.
+              Low-latency 5G NR beamforming and offline Bluetooth mesh door access remain 100% functional.
             </p>
           </div>
         </div>
       </div>
 
       {/* Interactive Category Horizontal Scroll */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-1 -mx-margin px-margin no-scrollbar">
+      <div className="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar w-full">
         {[
-          { id: 'all', label: 'All Events', icon: 'stream' },
-          { id: 'academic', label: 'Academic', icon: 'school' },
-          { id: 'tech', label: 'Career & Tech', icon: 'terminal' },
-          { id: 'student-life', label: 'Student Life', icon: 'celebration' },
-          { id: 'safety', label: 'Safety Workshops', icon: 'health_and_safety' },
+          { id: 'all', label: t.allEventsFilter, icon: 'stream' },
+          { id: 'academic', label: language === 'zh' ? '学术活动' : language === 'ms' ? 'Akademik' : language === 'id' ? 'Akademik' : language === 'kk' ? 'Академиялық' : 'Academic', icon: 'school' },
+          { id: 'tech', label: language === 'zh' ? '科技与职场' : language === 'ms' ? 'Kerjaya & Teknologi' : language === 'id' ? 'Karier & Teknologi' : language === 'kk' ? 'Мансап және технология' : 'Career & Tech', icon: 'terminal' },
+          { id: 'student-life', label: language === 'zh' ? '校园生活' : language === 'ms' ? 'Kehidupan Kampus' : language === 'id' ? 'Kehidupan Kampus' : language === 'kk' ? 'Студенттік өмір' : 'Student Life', icon: 'celebration' },
+          { id: 'safety', label: language === 'zh' ? '安全工坊' : language === 'ms' ? 'Bengkel Keselamatan' : language === 'id' ? 'Lokakarya Keamanan' : language === 'kk' ? 'Қауіпсіздік семинары' : 'Safety Workshops', icon: 'health_and_safety' },
         ].map((cat) => (
           <button
             key={cat.id}
@@ -165,11 +173,11 @@ export const CampusPulseEventsView: React.FC<CampusPulseEventsViewProps> = ({
             >
               <span className="material-symbols-outlined text-[18px]">event_available</span>
               <span>
-                {heroRsvp ? 'RSVP Confirmed • Badge Linked' : 'RSVP & Add to Smart Schedule'}
+                {heroRsvp ? `${t.rsvpConfirmedBadge} ✓` : t.reserveSpot}
               </span>
             </button>
             <button
-              onClick={() => alert('Beacon Node A4: Innovation Center Grand Atrium (Level 1).')}
+              onClick={() => showToast('Beacon Node A4: Innovation Center Grand Atrium (Level 1)')}
               className="w-11 h-11 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface flex items-center justify-center shrink-0 transition-colors"
               title="Locate Room Beacon"
             >
@@ -188,13 +196,19 @@ export const CampusPulseEventsView: React.FC<CampusPulseEventsViewProps> = ({
           </span>
         </div>
         <button
-          onClick={() => alert('Calendar synced with campus academic registry.')}
+          onClick={() => showToast('Calendar synced with campus academic registry.')}
           className="flex items-center gap-1 text-secondary font-label-md text-label-md hover:underline"
         >
           <span>Auto-Sync</span>
           <span className="material-symbols-outlined text-[16px]">sync</span>
         </button>
       </div>
+
+      {toastMsg && (
+        <div className="fixed bottom-20 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-xs font-mono px-4 py-2 rounded-full shadow-2xl z-50 animate-in fade-in">
+          {toastMsg}
+        </div>
+      )}
 
       {/* Event Feed Items */}
       <div className="flex flex-col space-y-3">

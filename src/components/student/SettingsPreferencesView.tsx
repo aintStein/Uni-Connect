@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StudentProfile, Language, ThemeMode } from '../../types';
 import { TRANSLATIONS } from '../../data/mockCampusData';
+import { SwitchToggle } from '../common/SwitchToggle';
 
 interface SettingsPreferencesViewProps {
   profile: StudentProfile;
@@ -60,11 +61,11 @@ export const SettingsPreferencesView: React.FC<SettingsPreferencesViewProps> = (
               <span className="material-symbols-outlined text-[24px]">arrow_back</span>
             </button>
             <h2 className="text-lg font-bold text-on-surface tracking-tight">
-              Settings & Preferences
+              {t.settingsTab}
             </h2>
           </div>
           <button
-            onClick={() => alert('Uni Connect Telemetry v2.4.0 Help & Diagnostic Docs')}
+            onClick={() => {}}
             className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface"
           >
             <span className="material-symbols-outlined text-[18px]">help_outline</span>
@@ -232,18 +233,11 @@ export const SettingsPreferencesView: React.FC<SettingsPreferencesViewProps> = (
             </span>
           </div>
 
-          <button
-            onClick={onToggleHighContrast}
-            className={`w-12 h-6 rounded-full transition-colors relative p-0.5 shrink-0 ${
-              highContrast ? 'bg-secondary' : 'bg-slate-300 dark:bg-slate-700'
-            }`}
-          >
-            <div
-              className={`w-5 h-5 rounded-full bg-white shadow transition-transform ${
-                highContrast ? 'translate-x-6' : 'translate-x-0'
-              }`}
-            />
-          </button>
+          <SwitchToggle
+            checked={highContrast}
+            onChange={onToggleHighContrast}
+            ariaLabel="High Contrast Radar"
+          />
         </div>
       </div>
 
@@ -275,18 +269,13 @@ export const SettingsPreferencesView: React.FC<SettingsPreferencesViewProps> = (
               </p>
             </div>
           </div>
-          <button
-            onClick={onToggleHandsFreeUnlock}
-            className={`w-12 h-6 rounded-full transition-colors relative p-0.5 shrink-0 mt-1 ${
-              handsFreeUnlock ? 'bg-secondary' : 'bg-slate-300 dark:bg-slate-700'
-            }`}
-          >
-            <div
-              className={`w-5 h-5 rounded-full bg-white shadow transition-transform ${
-                handsFreeUnlock ? 'translate-x-6' : 'translate-x-0'
-              }`}
+          <div className="mt-1">
+            <SwitchToggle
+              checked={handsFreeUnlock}
+              onChange={onToggleHandsFreeUnlock}
+              ariaLabel="Hands-free Wi-Fi Door Unlock"
             />
-          </button>
+          </div>
         </div>
 
         {/* Toggle 2: Automated Attendance */}
@@ -304,18 +293,13 @@ export const SettingsPreferencesView: React.FC<SettingsPreferencesViewProps> = (
               </p>
             </div>
           </div>
-          <button
-            onClick={onToggleAutoAttendance}
-            className={`w-12 h-6 rounded-full transition-colors relative p-0.5 shrink-0 mt-1 ${
-              autoAttendance ? 'bg-secondary' : 'bg-slate-300 dark:bg-slate-700'
-            }`}
-          >
-            <div
-              className={`w-5 h-5 rounded-full bg-white shadow transition-transform ${
-                autoAttendance ? 'translate-x-6' : 'translate-x-0'
-              }`}
+          <div className="mt-1">
+            <SwitchToggle
+              checked={autoAttendance}
+              onChange={onToggleAutoAttendance}
+              ariaLabel="Automated Classroom Attendance"
             />
-          </button>
+          </div>
         </div>
 
         {/* Toggle 3: SOS Haptics */}
@@ -327,22 +311,17 @@ export const SettingsPreferencesView: React.FC<SettingsPreferencesViewProps> = (
             <div className="flex flex-col min-w-0">
               <span className="font-bold text-xs text-on-surface">Emergency SOS Quick-Trigger</span>
               <p className="text-[11px] text-on-surface-variant mt-0.5">
-                Distinct haptic feedback pulse when the 3-second rapid emergency safety trigger is primed.
+                Distinct haptic feedback pulse when the 1.5-second rapid emergency safety trigger is primed.
               </p>
             </div>
           </div>
-          <button
-            onClick={onToggleSosHaptic}
-            className={`w-12 h-6 rounded-full transition-colors relative p-0.5 shrink-0 mt-1 ${
-              sosHaptic ? 'bg-secondary' : 'bg-slate-300 dark:bg-slate-700'
-            }`}
-          >
-            <div
-              className={`w-5 h-5 rounded-full bg-white shadow transition-transform ${
-                sosHaptic ? 'translate-x-6' : 'translate-x-0'
-              }`}
+          <div className="mt-1">
+            <SwitchToggle
+              checked={sosHaptic}
+              onChange={onToggleSosHaptic}
+              ariaLabel="Emergency SOS Quick-Trigger"
             />
-          </button>
+          </div>
         </div>
       </div>
 

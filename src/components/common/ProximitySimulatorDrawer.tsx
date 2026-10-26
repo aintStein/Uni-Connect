@@ -106,13 +106,13 @@ export const ProximitySimulatorDrawer: React.FC<ProximitySimulatorDrawerProps> =
                     UWB Proximity Simulator
                   </h3>
                   <span className="text-[11px] text-on-surface-variant font-mono">
-                    Direct distance & beacon triangulation test bench
+                    Distance &amp; unlock simulator
                   </span>
                 </div>
               </div>
               <button
                 onClick={onToggleOpen}
-                className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface"
+                className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface cursor-pointer"
               >
                 <span className="material-symbols-outlined text-[18px]">close</span>
               </button>
@@ -121,7 +121,7 @@ export const ProximitySimulatorDrawer: React.FC<ProximitySimulatorDrawerProps> =
             {/* Target Portal Selection */}
             <div>
               <label className="block text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-1.5">
-                Targeted Campus Portal / Beacon
+                Target Portal
               </label>
               <div className="grid grid-cols-2 gap-2">
                 {beacons.map((beacon) => (

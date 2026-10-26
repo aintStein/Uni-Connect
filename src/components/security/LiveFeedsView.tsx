@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { CameraFeedItem } from '../../types';
-import { CAMERA_FEEDS } from '../../data/mockCampusData';
+import { CameraFeedItem, Language } from '../../types';
+import { CAMERA_FEEDS, TRANSLATIONS } from '../../data/mockCampusData';
 
-export const LiveFeedsView: React.FC = () => {
+interface LiveFeedsViewProps {
+  language?: Language;
+}
+
+export const LiveFeedsView: React.FC<LiveFeedsViewProps> = ({ language = 'en' }) => {
+  const t = TRANSLATIONS[language];
   const [feeds, setFeeds] = useState<CameraFeedItem[]>(CAMERA_FEEDS);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [thermalMode, setThermalMode] = useState(true);
@@ -68,10 +73,10 @@ export const LiveFeedsView: React.FC = () => {
       {/* Filter Chips Bar */}
       <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
         {[
-          { id: 'all', label: 'All Cameras' },
-          { id: 'high-density', label: 'High Density Zones' },
-          { id: 'entrances', label: 'Entrances & Perimeters' },
-          { id: 'labs', label: 'Critical Labs' },
+          { id: 'all', label: language === 'zh' ? '全部摄像头' : language === 'ms' ? 'Semua Kamera' : language === 'id' ? 'Semua Kamera' : language === 'kk' ? 'Барлық камералар' : 'All Cameras' },
+          { id: 'high-density', label: language === 'zh' ? '高人流密集区' : language === 'ms' ? 'Zon Kepadatan Tinggi' : language === 'id' ? 'Zona Padat Orang' : language === 'kk' ? 'Тығыздығы жоғары аймақ' : 'High Density Zones' },
+          { id: 'entrances', label: language === 'zh' ? '出入口及周界' : language === 'ms' ? 'Pintu Masuk & Perimeter' : language === 'id' ? 'Gerbang & Perimeter' : language === 'kk' ? 'Кіреберістер' : 'Entrances & Perimeters' },
+          { id: 'labs', label: language === 'zh' ? '重点实验室' : language === 'ms' ? 'Makmal Utama' : language === 'id' ? 'Lab Utama' : language === 'kk' ? 'Негізгі зертханалар' : 'Critical Labs' },
         ].map((chip) => (
           <button
             key={chip.id}

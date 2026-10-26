@@ -55,13 +55,17 @@ export default function App() {
     const root = document.documentElement;
     if (themeMode === 'dark') {
       root.classList.add('dark');
+      root.classList.remove('light');
     } else if (themeMode === 'light') {
       root.classList.remove('dark');
+      root.classList.add('light');
     } else {
       if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         root.classList.add('dark');
+        root.classList.remove('light');
       } else {
         root.classList.remove('dark');
+        root.classList.add('light');
       }
     }
 
@@ -104,13 +108,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-slate-200/40 dark:bg-slate-950 flex justify-center selection:bg-secondary-fixed selection:text-on-secondary-fixed antialiased">
-      <div
-        className={`w-full max-w-md min-h-screen flex flex-col relative shadow-2xl transition-colors duration-200 border-x border-slate-200/50 dark:border-slate-800/80 ${
-          currentPersona === 'student' && studentTab === 'access'
-            ? 'bg-[#090e1a] text-white'
-            : 'bg-surface text-on-surface'
-        }`}
-      >
+      <div className="w-full max-w-md min-h-screen flex flex-col relative shadow-2xl transition-colors duration-200 border-x border-slate-200/50 dark:border-slate-800/80 bg-surface text-on-surface">
         {/* Universal Fixed Header */}
         <Header
           currentPersona={currentPersona}
@@ -126,6 +124,12 @@ export default function App() {
               setStudentTab('settings');
             }
           }}
+          themeMode={themeMode}
+          onToggleTheme={() => setThemeMode(themeMode === 'dark' ? 'light' : 'dark')}
+          studentTab={studentTab}
+          onSelectStudentTab={setStudentTab}
+          securityTab={securityTab}
+          onSelectSecurityTab={setSecurityTab}
         />
 
         {/* Main Content Viewport */}
@@ -151,6 +155,9 @@ export default function App() {
                 currentDistance={currentDistance}
                 onOpenSos={() => setStudentTab('safety')}
                 language={language}
+                themeMode={themeMode}
+                onToggleTheme={() => setThemeMode(themeMode === 'dark' ? 'light' : 'dark')}
+                highContrast={highContrast}
               />
             )}
 
@@ -197,13 +204,13 @@ export default function App() {
         {/* Campus Operations & Security Sentinel Mode Screens */}
         {currentPersona === 'security' && (
           <>
-            {securityTab === 'feeds' && <LiveFeedsView />}
-            {securityTab === 'headcount' && <HeadcountZonesView />}
-            {securityTab === 'access' && <AccessControlsView />}
+            {securityTab === 'feeds' && <LiveFeedsView language={language} />}
+            {securityTab === 'headcount' && <HeadcountZonesView language={language} />}
+            {securityTab === 'access' && <AccessControlsView language={language} />}
             {securityTab === 'alerts' && (
               <SecurityPortalLogin
+                language={language}
                 onAuthenticateSuccess={() => {
-                  alert('Officer Credentials Authenticated: Accessing Live CCTV Feeds');
                   setSecurityTab('feeds');
                 }}
               />

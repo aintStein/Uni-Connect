@@ -1,8 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { PortalTelemetry } from '../../types';
-import { PORTAL_TELEMETRIES } from '../../data/mockCampusData';
+import { PortalTelemetry, Language } from '../../types';
+import { PORTAL_TELEMETRIES, TRANSLATIONS } from '../../data/mockCampusData';
+import { SwitchToggle } from '../common/SwitchToggle';
 
-export const AccessControlsView: React.FC = () => {
+interface AccessControlsViewProps {
+  language?: Language;
+}
+
+export const AccessControlsView: React.FC<AccessControlsViewProps> = ({ language = 'en' }) => {
+  const t = TRANSLATIONS[language];
   const [portals, setPortals] = useState<PortalTelemetry[]>(PORTAL_TELEMETRIES);
   const [isLockdownEngaged, setIsLockdownEngaged] = useState(false);
   const [lockdownHolding, setLockdownHolding] = useState(false);
@@ -12,6 +18,8 @@ export const AccessControlsView: React.FC = () => {
   const [gateBRemaining, setGateBRemaining] = useState(5);
   const [lab402SealEngaged, setLab402SealEngaged] = useState(true);
   const [activeModal, setActiveModal] = useState<string | null>(null);
+  const [dispatchActive, setDispatchActive] = useState(false);
+  const [dispatchToast, setDispatchToast] = useState<string | null>(null);
 
   const holdTimerRef = useRef<number | null>(null);
   const startTimeRef = useRef<number | null>(null);
@@ -145,7 +153,7 @@ export const AccessControlsView: React.FC = () => {
                   Tactile Interlock
                 </span>
                 <h4 className="font-bold text-sm text-on-error-container mt-0.5">
-                  Emergency Lockdown
+                  {t.masterLockdown}
                 </h4>
               </div>
               <span className="material-symbols-outlined text-error text-[24px]">lock</span>
@@ -196,7 +204,7 @@ export const AccessControlsView: React.FC = () => {
                 <span className="text-[10px] font-mono uppercase font-bold tracking-wider text-secondary">
                   Life Safety Protocol
                 </span>
-                <h4 className="font-bold text-sm text-on-surface mt-0.5">Campus Free-Egress</h4>
+                <h4 className="font-bold text-sm text-on-surface mt-0.5">{t.freeEgress}</h4>
               </div>
               <span className="material-symbols-outlined text-secondary text-[24px]">door_open</span>
             </div>
@@ -337,18 +345,11 @@ export const AccessControlsView: React.FC = () => {
 
             <div className="flex items-center justify-between pt-1">
               <span className="text-xs font-medium text-on-surface">Emergency Magnetic Seal</span>
-              <button
-                onClick={() => setLab402SealEngaged(!lab402SealEngaged)}
-                className={`w-12 h-6 rounded-full transition-colors relative p-0.5 ${
-                  lab402SealEngaged ? 'bg-error' : 'bg-slate-300 dark:bg-slate-700'
-                }`}
-              >
-                <div
-                  className={`w-5 h-5 rounded-full bg-white shadow transition-transform ${
-                    lab402SealEngaged ? 'translate-x-6' : 'translate-x-0'
-                  }`}
-                />
-              </button>
+              <SwitchToggle
+                checked={lab402SealEngaged}
+                onChange={() => setLab402SealEngaged(!lab402SealEngaged)}
+                ariaLabel="Emergency Magnetic Seal"
+              />
             </div>
           </div>
 
@@ -443,7 +444,7 @@ export const AccessControlsView: React.FC = () => {
             </div>
 
             <button
-              onClick={() => alert('Ingress lanes rebalanced: Lanes 1 & 2 set to student rush mode')}
+              onClick={() => setDispatchToast('Ingress lanes rebalanced: Lanes 1 & 2 set to student rush mode')}
               className="w-full h-10 bg-surface-container-high text-on-surface rounded-xl text-xs font-semibold hover:bg-surface-container-highest transition-colors flex items-center justify-center gap-1.5"
             >
               <span className="material-symbols-outlined text-[18px]">tune</span>
@@ -538,37 +539,152 @@ export const AccessControlsView: React.FC = () => {
         </div>
       </div>
 
+      {/* Unblockable Security Dispatch Banner when active */}
+      {dispatchActive && (
+        <div className="w-full bg-error text-white rounded-3xl p-4 shadow-lg flex items-center justify-between gap-3 animate-in fade-in duration-200">
+          <div className="flex items-center gap-3 min-w-0">
+            <span className="material-symbols-outlined text-white text-[24px] animate-pulse" style={{ fontVariationSettings: "'FILL' 1" }}>
+              local_police
+            </span>
+            <div className="min-w-0">
+              <span className="text-[10px] font-mono uppercase tracking-wider text-white/80 font-semibold block">
+                Fail-Safe Priority Override (800MHz Radio)
+              </span>
+              <span className="text-xs font-bold truncate block">
+                Patrol Unit #07 Dispatched • Officer Vance En Route • GPS Locked
+              </span>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 shrink-0">
+            <button
+              onClick={() => setActiveModal('security-dispatch')}
+              className="px-3 py-1.5 bg-white text-error rounded-xl text-xs font-bold shadow hover:bg-slate-100"
+            >
+              Dispatch Details
+            </button>
+            <button
+              onClick={() => setDispatchActive(false)}
+              className="px-2.5 py-1.5 bg-white/20 hover:bg-white/30 text-white rounded-xl text-xs font-semibold"
+            >
+              Stand Down
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Controller Firmware Bar */}
-      <div className="w-full bg-surface-container-high rounded-3xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-        <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-2xl bg-secondary flex items-center justify-center text-white shrink-0">
+      <div className="w-full bg-surface-container-high rounded-3xl p-4 flex flex-col gap-3 border border-slate-200/50 dark:border-slate-800 shadow-sm">
+        {/* Top Header Row with Icon, Title, and Badge */}
+        <div className="flex items-start gap-3 min-w-0">
+          <div className="w-9 h-9 rounded-2xl bg-secondary flex items-center justify-center text-white shrink-0 mt-0.5 shadow-xs">
             <span className="material-symbols-outlined text-[18px]">security_update_good</span>
           </div>
-          <div>
-            <span className="text-xs font-bold text-on-surface block">
-              Access Controller Firmware 4.19
-            </span>
-            <span className="text-[11px] text-on-surface-variant font-mono">
-              Cryptographic tokens rotating every 300 seconds
-            </span>
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center justify-between gap-2 flex-wrap">
+              <span className="text-xs font-bold text-on-surface">
+                Access Controller Firmware 4.19
+              </span>
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-[10px] font-mono font-bold whitespace-nowrap border border-emerald-500/30">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                Unblockable Channel Active
+              </span>
+            </div>
+            <p className="text-[11px] text-on-surface-variant font-mono mt-1 leading-relaxed">
+              Dual redundant hardware link: Hardware override bypasses firmware lockouts
+            </p>
           </div>
         </div>
 
-        <div className="flex items-center gap-2 w-full sm:w-auto">
+        {/* Action Buttons Row: Stacks cleanly, 100% contained within card, no overflow */}
+        <div className="grid grid-cols-2 gap-2 pt-1 border-t border-slate-200/40 dark:border-slate-800/60">
           <button
-            onClick={() => alert('Controller Firmware Audit Log exported to logs.csv')}
-            className="flex-1 sm:flex-none px-3.5 py-2 bg-surface-container-lowest text-on-surface rounded-xl text-xs font-semibold shadow-xs hover:bg-surface"
+            onClick={() => {
+              setDispatchToast('Firmware telemetry log generated: access_audit_v419.csv');
+              setTimeout(() => setDispatchToast(null), 3000);
+            }}
+            className="w-full py-2.5 px-3 bg-surface-container-lowest hover:bg-surface text-on-surface rounded-xl text-xs font-semibold shadow-xs border border-slate-200 dark:border-slate-700 flex items-center justify-center gap-1.5 active:scale-98 transition-all"
           >
-            Export Log
+            <span className="material-symbols-outlined text-[16px]">file_download</span>
+            <span className="truncate">{t.exportLog}</span>
           </button>
           <button
-            onClick={() => alert('Emergency Security Dispatch dispatched to active sector')}
-            className="flex-1 sm:flex-none px-3.5 py-2 bg-primary text-white rounded-xl text-xs font-semibold shadow-xs hover:bg-slate-900"
+            onClick={() => {
+              setDispatchActive(true);
+              setActiveModal('security-dispatch');
+            }}
+            className="w-full py-2.5 px-3 bg-error hover:bg-error/90 text-white rounded-xl text-xs font-bold shadow-md flex items-center justify-center gap-1.5 active:scale-98 transition-all"
           >
-            Security Dispatch
+            <span className="material-symbols-outlined text-[16px]" style={{ fontVariationSettings: "'FILL' 1" }}>
+              local_police
+            </span>
+            <span className="truncate">{t.securityDispatch}</span>
           </button>
         </div>
       </div>
+
+      {/* Toast Feedback */}
+      {dispatchToast && (
+        <div className="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 bg-slate-900 text-white px-4 py-2 rounded-2xl shadow-xl text-xs font-mono flex items-center gap-2 animate-in fade-in duration-150">
+          <span className="material-symbols-outlined text-emerald-400 text-[18px]">check_circle</span>
+          <span>{dispatchToast}</span>
+        </div>
+      )}
+
+      {/* Unblockable Security Dispatch Modal */}
+      {activeModal === 'security-dispatch' && (
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-surface-container-lowest rounded-3xl p-6 max-w-sm w-full shadow-2xl space-y-4 border border-slate-200/60 dark:border-slate-800">
+            <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
+              <h3 className="font-bold text-sm text-error flex items-center gap-2">
+                <span className="material-symbols-outlined text-[20px]" style={{ fontVariationSettings: "'FILL' 1" }}>local_police</span>
+                <span>Tactical Security Dispatch</span>
+              </h3>
+              <button
+                onClick={() => setActiveModal(null)}
+                className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface"
+              >
+                <span className="material-symbols-outlined text-sm">close</span>
+              </button>
+            </div>
+
+            <div className="p-3.5 bg-error-container/20 rounded-2xl space-y-2 border border-error/30">
+              <div className="flex items-center justify-between">
+                <span className="text-[10px] font-mono text-error font-bold uppercase tracking-wider">
+                  Hardware Priority Link
+                </span>
+                <span className="inline-flex items-center gap-1 text-[10px] font-mono text-emerald-600 font-bold">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+                  Signal 100%
+                </span>
+              </div>
+              <p className="text-xs text-on-surface leading-relaxed">
+                Emergency dispatch command transmitted via direct 800MHz tactical radio. Guaranteed transmission regardless of firmware cycle or lockdown.
+              </p>
+              <div className="p-2 bg-surface-container-low rounded-xl text-xs font-mono space-y-1">
+                <div>• Unit: Patrol Car #07 (Officer D. Vance)</div>
+                <div>• Sector: Academic Core / Turing Quad</div>
+                <div>• Response Mode: Code 2 Priority (ETA 90s)</div>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-2 pt-1">
+              <a
+                href="tel:999"
+                className="w-full py-2.5 rounded-xl bg-error text-white font-bold text-xs flex items-center justify-center gap-2 shadow"
+              >
+                <span className="material-symbols-outlined text-[18px]">call</span>
+                <span>Escalate to 999 National Emergency</span>
+              </a>
+              <button
+                onClick={() => setActiveModal(null)}
+                className="w-full py-2 rounded-xl bg-surface-container text-xs text-on-surface font-semibold hover:bg-surface-container-high"
+              >
+                Keep Active &amp; Dismiss
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Incident Review Modal */}
       {activeModal === 'unauth-incident' && (

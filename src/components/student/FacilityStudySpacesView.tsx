@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FacilityStudySpace, Language } from '../../types';
 import { FACILITY_SPACES, TRANSLATIONS } from '../../data/mockCampusData';
+import { SwitchToggle } from '../common/SwitchToggle';
 
 interface FacilityStudySpacesViewProps {
   language: Language;
@@ -47,7 +48,7 @@ export const FacilityStudySpacesView: React.FC<FacilityStudySpacesViewProps> = (
               Live Facility Density & Study Spaces
             </h2>
             <p className="text-xs text-on-surface-variant mt-1">
-              Privacy-Safe Telemetry • Anonymous RF density without camera or device tracking
+              Anonymous RF density • Zero tracking
             </p>
           </div>
         </div>
@@ -64,7 +65,7 @@ export const FacilityStudySpacesView: React.FC<FacilityStudySpacesViewProps> = (
                 : 'bg-surface-container-high text-on-surface hover:bg-surface-container-highest'
             }`}
           >
-            All Facilities
+            {t.studySpacesFilterAll}
           </button>
           <button
             onClick={() => setSelectedCategory('study')}
@@ -74,7 +75,7 @@ export const FacilityStudySpacesView: React.FC<FacilityStudySpacesViewProps> = (
                 : 'bg-surface-container-high text-on-surface hover:bg-surface-container-highest'
             }`}
           >
-            Study & Quiet Rooms
+            {language === 'zh' ? '自习静音室' : language === 'ms' ? 'Bilik Belajar Sunyi' : language === 'id' ? 'Ruang Tenang Belajar' : language === 'kk' ? 'Тыныш оқу бөлмесі' : 'Study & Quiet Rooms'}
           </button>
           <button
             onClick={() => setSelectedCategory('sports')}
@@ -84,7 +85,7 @@ export const FacilityStudySpacesView: React.FC<FacilityStudySpacesViewProps> = (
                 : 'bg-surface-container-high text-on-surface hover:bg-surface-container-highest'
             }`}
           >
-            Sports & Gym
+            {language === 'zh' ? '体育运动馆' : language === 'ms' ? 'Sukan & Gim' : language === 'id' ? 'Olahraga & Gym' : language === 'kk' ? 'Спорт және жаттығу' : 'Sports & Gym'}
           </button>
           <button
             onClick={() => setSelectedCategory('dining')}
@@ -94,7 +95,7 @@ export const FacilityStudySpacesView: React.FC<FacilityStudySpacesViewProps> = (
                 : 'bg-surface-container-high text-on-surface hover:bg-surface-container-highest'
             }`}
           >
-            Dining & Social
+            {language === 'zh' ? '餐厅与社交' : language === 'ms' ? 'Makan & Sosial' : language === 'id' ? 'Kantin & Sosial' : language === 'kk' ? 'Асхана және орталық' : 'Dining & Social'}
           </button>
         </div>
 
@@ -151,8 +152,8 @@ export const FacilityStudySpacesView: React.FC<FacilityStudySpacesViewProps> = (
               </span>
               <span>•</span>
               <span className="inline-flex items-center gap-1">
-                <span className="material-symbols-outlined text-[14px] text-secondary">wifi</span>
-                Wi-Fi 6E
+                <span className="material-symbols-outlined text-[14px] text-secondary">cell_tower</span>
+                5G NR Ultra
               </span>
             </div>
           </div>
@@ -176,11 +177,11 @@ export const FacilityStudySpacesView: React.FC<FacilityStudySpacesViewProps> = (
 
         <div className="flex items-center gap-2 mt-3 pt-1">
           <button
-            onClick={() => alert('Walking route initiated: 3 min walk across North Commons.')}
+            onClick={() => {}}
             className="flex-1 h-11 rounded-xl bg-secondary text-white font-semibold text-xs flex items-center justify-center gap-2 shadow-xs hover:bg-secondary-container transition-all"
           >
             <span className="material-symbols-outlined text-[18px]">near_me</span>
-            <span>Walk There (3 min)</span>
+            <span>{language === 'zh' ? '前往导航 (3分钟)' : language === 'ms' ? 'Navigasi Laluan (3 min)' : language === 'id' ? 'Navigasi Rute (3 mnt)' : language === 'kk' ? 'Бағытты бастау (3 мин)' : 'Walk There (3 min)'}</span>
           </button>
           <button
             onClick={() => toggleSave('fac-quiet-pavilion')}
@@ -292,7 +293,7 @@ export const FacilityStudySpacesView: React.FC<FacilityStudySpacesViewProps> = (
           <span className="text-[11px] font-mono text-on-surface-variant">Historic Pattern</span>
         </div>
         <p className="text-xs text-on-surface-variant">
-          Synthesized from anonymized campus Wi-Fi density trends over the past 4 weeks.
+          Synthesized from anonymized campus 5G NR microcell density trends over the past 4 weeks.
         </p>
 
         {/* Hourly Bars */}
@@ -329,24 +330,17 @@ export const FacilityStudySpacesView: React.FC<FacilityStudySpacesViewProps> = (
               <span className="material-symbols-outlined text-[20px]">notifications_active</span>
             </div>
             <div className="min-w-0">
-              <h4 className="font-bold text-xs text-on-surface truncate">Smart Density Ping</h4>
+              <h4 className="font-bold text-xs text-on-surface truncate">{t.smartDensityPingTitle}</h4>
               <p className="text-[11px] text-on-surface-variant truncate">
-                Alert me when Gym drops to Moderate or Calm
+                {t.alertWhenQuiet}
               </p>
             </div>
           </div>
-          <button
-            onClick={() => setDensityAlertActive(!densityAlertActive)}
-            className={`w-12 h-6 rounded-full transition-colors relative p-0.5 ${
-              densityAlertActive ? 'bg-secondary' : 'bg-slate-300 dark:bg-slate-700'
-            }`}
-          >
-            <div
-              className={`w-5 h-5 rounded-full bg-white shadow transition-transform ${
-                densityAlertActive ? 'translate-x-6' : 'translate-x-0'
-              }`}
-            />
-          </button>
+          <SwitchToggle
+            checked={densityAlertActive}
+            onChange={() => setDensityAlertActive(!densityAlertActive)}
+            ariaLabel="Smart Density Ping"
+          />
         </div>
 
         <div className="flex items-center gap-1.5 text-secondary text-[11px] font-mono pt-1">

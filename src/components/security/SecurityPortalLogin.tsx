@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { Language } from '../../types';
+import { TRANSLATIONS } from '../../data/mockCampusData';
 
 interface SecurityPortalLoginProps {
   onAuthenticateSuccess: () => void;
+  language?: Language;
 }
 
 export const SecurityPortalLogin: React.FC<SecurityPortalLoginProps> = ({
   onAuthenticateSuccess,
+  language = 'en',
 }) => {
+  const t = TRANSLATIONS[language];
   const [authMode, setAuthMode] = useState<'biometric' | 'pin'>('biometric');
   const [isFaceMode, setIsFaceMode] = useState(false);
   const [isScanning, setIsScanning] = useState(false);
@@ -88,7 +93,7 @@ export const SecurityPortalLogin: React.FC<SecurityPortalLoginProps> = ({
         </div>
 
         <h1 className="text-xl font-bold text-on-surface tracking-tight">
-          Campus Operations & Security Portal
+          {t.securityPortal}
         </h1>
         <p className="text-xs text-on-surface-variant mt-1 max-w-xs">
           Uni Connect Central Sentinel · High-Security Administrative Gateway
